@@ -2832,8 +2832,8 @@ class Paneladmin extends CI_Controller {
 			$config['create_thumb']= FALSE;
 			$config['maintain_ratio']= FALSE;
 			$config['quality']= '100%';
-			$config['width']= 150;
-			$config['height']= 150;
+			$config['width']= 1920;
+			$config['height']= 1080;
 			$config['new_image']= './bahan/foto_products/'.$hasil22['file_name'];
 			$this->load->library('image_lib', $config);
 			$this->image_lib->resize();
@@ -2908,7 +2908,7 @@ class Paneladmin extends CI_Controller {
 			$data['profil_stat']   = '';
 			$data['sliders_stat']   = '';
 			$data['products_stat']   = '';
-			$data['cat_products_stat']   = 'active';
+			$data['cat_products_stat']   = '';
 			$data['testimonial_stat']   = '';
 			$data['blogs_stat']   = '';
 			$data['message_stat']   = '';
@@ -2916,7 +2916,7 @@ class Paneladmin extends CI_Controller {
 			$data['kehadiran_menu_open']   = 'menu-open';
 		    $data['jamkerja_stat']   = '';
 		    $data['absen_stat']   = '';
-		    $data['dataabsen_stat']   = 'active';
+		    $data['dataabsen_stat']   = '';
 		    $data['cuti_stat']   = '';
 		    $data['gaji_stat']   = '';
 		    $data['pengumuman_stat']   = '';

@@ -78,7 +78,11 @@
                     <div class="form-group">
                       <label>Image Preview</label>
                       <div class="row">
-                        <img class="img-fluid mb-3" src="<?php echo base_url()?>bahan/foto_products/<?php echo $rows['products_cat_gambar'] ?>" alt="Photo">
+                        <?php if(empty($rows['products_cat_gambar'])) {
+                            echo "<img class='img-fluid mb-3' src='".base_url()."bahan/foto_products/noimage.jpg'>";
+                          }else {
+                            echo " <img class='img-fluid mb-3' src='".base_url('./bahan/foto_products/'.$rows['products_cat_gambar'])."'> ";}
+                         ?>
                       </div>
 
                     </div>

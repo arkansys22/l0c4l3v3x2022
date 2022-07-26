@@ -38,6 +38,15 @@ class Crud_m extends CI_model{
       return $this->db->get($this->table_services)->row();
   }
 
+  public function view_where_orderings($table,$data,$order,$ordering)
+    {
+         $this->db->select('*');
+         $this->db->from($table);
+         $this->db->where($data);
+         $this->db->order_by($order,$ordering);
+         return $this->db->get()->result();
+     }
+
   function get_by_id_products_category($products_cat_id)
   {
       $this->db->where($this->products_cat_id, $products_cat_id);
@@ -140,8 +149,8 @@ class Crud_m extends CI_model{
       $this->db->order_by($order,$ordering);
         return $this->db->get()->result_array();
   }
-  
-  
+
+
   public function view_join_ordering($table1,$table2,$field,$order,$ordering)
   {
     $this->db->select('*');

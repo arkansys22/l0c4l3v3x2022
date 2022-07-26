@@ -67,7 +67,7 @@
   <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <li class="nav-item">
-        <a href="<?php echo base_url(); ?>paneladmin/home" class="nav-link <?php echo $home_stat; ?>" >
+        <a href="<?php echo base_url(); ?>paneladmin/home" class="nav-link" >
           <i class="nav-icon fas fa-th"></i>
           <p>
             Dashboard
@@ -76,7 +76,7 @@
       </li>
     <?php  if($this->session->level=='1' OR $this->session->level=='2'){ ?>
       <li class="nav-item">
-        <a href="<?php echo base_url(); ?>paneladmin/identitaswebsite" class="nav-link <?php echo $identitas_stat; ?>" >
+        <a href="<?php echo base_url(); ?>paneladmin/identitaswebsite" class="nav-link" >
           <i class="nav-icon fas fa-cogs"></i>
           <p>
             Data Website
@@ -92,8 +92,8 @@
         </a>
       </li>
 
-      <li class="nav-item <?php echo $karyawan_menu_open; ?>">
-        <a href="#" class="nav-link  <?php echo $cat_products_stat; ?>">
+      <li class="nav-item">
+        <a href="#" class="nav-link">
           <i class="nav-icon far fas fa-fw fa-users"></i>
           <p>
             Karyawan
@@ -105,7 +105,7 @@
         <ul class="nav nav-treeview">
             <?php  if($this->session->level=='1'){ ?>
           <li class="nav-item">
-            <a href="<?php echo base_url(); ?>paneladmin/divisi" class="nav-link <?php echo $message_stat; ?>">
+            <a href="<?php echo base_url(); ?>paneladmin/divisi" class="nav-link ">
               <i class="far fa-circle nav-icon"></i>
               <p>Divisi / Posisi</p>
             </a>
@@ -113,19 +113,19 @@
           <?php } ?>
 
           <li class="nav-item">
-            <a href="<?php echo base_url(); ?>paneladmin/lowongan" class="nav-link <?php echo $products_stat; ?>">
+            <a href="<?php echo base_url(); ?>paneladmin/lowongan" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Lowongan</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo base_url(); ?>paneladmin/permohonan" class="nav-link <?php echo $gallery_stat; ?>">
+            <a href="<?php echo base_url(); ?>paneladmin/permohonan" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Permohonan</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo base_url(); ?>paneladmin/data_karyawan" class="nav-link <?php echo $sliders_stat; ?> ">
+            <a href="<?php echo base_url(); ?>paneladmin/data_karyawan" class="nav-link ">
               <i class="far fa-circle nav-icon"></i>
               <p>Data Karyawan</p>
             </a>
@@ -134,7 +134,7 @@
       </li>
 
       <li class="nav-item">
-        <a href="<?php echo base_url(); ?>paneladmin/pengumuman" class="nav-link <?php echo $pengumuman_stat; ?>" >
+        <a href="<?php echo base_url(); ?>paneladmin/pengumuman" class="nav-link " >
           <i class="nav-icon fas fa-bullhorn"></i>
           <p>
             Pengumuman
@@ -143,8 +143,8 @@
       </li>
 
       <?php  if($this->session->level=='1' OR $this->session->level=='2'){ ?>
-        <li class="nav-item <?php echo $produk_menu_open; ?>">
-          <a href="#" class="nav-link <?php echo $produk_category; ?> <?php echo $produk; ?> <?php echo $services; ?>">
+        <li class="nav-item">
+          <a href="#" class="nav-link">
             <i class="nav-icon far fas fa-fw fa-users"></i>
             <p>
               Produk Kami
@@ -156,7 +156,7 @@
           <ul class="nav nav-treeview">
               <?php  if($this->session->level=='1'){ ?>
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>paneladmin/products_cat" class="nav-link <?php echo $produk_category; ?> ">
+              <a href="<?php echo base_url(); ?>paneladmin/products_cat" class="nav-link ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Kategori</p>
               </a>
@@ -164,13 +164,13 @@
             <?php } ?>
 
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>paneladmin/products" class="nav-link <?php echo $produk; ?>">
+              <a href="<?php echo base_url(); ?>paneladmin/products" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Portfolio</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>paneladmin/services" class="nav-link <?php echo $services; ?>">
+              <a href="<?php echo base_url(); ?>paneladmin/services" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Layanan</p>
               </a>
@@ -180,7 +180,7 @@
         </li>
         <?php  if($this->session->level=='1'){ ?>
         <li class="nav-item ">
-          <a href="<?php echo base_url(); ?>paneladmin/testimonial" class="nav-link <?php echo $testimonial_stat; ?>">
+          <a href="<?php echo base_url(); ?>paneladmin/testimonial" class="nav-link">
             <i class="nav-icon fas fa-cogs"></i>
             <p>
               Reviews
@@ -189,7 +189,7 @@
         </li>
         <?php } ?>
         <li class="nav-item ">
-          <a href="<?php echo base_url(); ?>paneladmin/blogs" class="nav-link <?php echo $blogs_stat; ?>">
+          <a href="<?php echo base_url(); ?>paneladmin/blogs" class="nav-link ">
             <i class="nav-icon fas fa-blog"></i>
             <p>
               Artikel
@@ -199,7 +199,7 @@
 
 
       <li class="nav-item ">
-        <a href="<?php echo base_url(); ?>paneladmin/profil" class="nav-link <?php echo $konfig_stat; ?>">
+        <a href="<?php echo base_url(); ?>paneladmin/profil" class="nav-link">
           <i class="nav-icon fas fa-cogs"></i>
           <p>
             Pengaturan

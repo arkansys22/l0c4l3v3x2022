@@ -48,77 +48,24 @@
                 <div class="fw-carousel  fs-gallery-wrap fl-wrap full-height lightgallery" data-mousecontrol="true">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
+                          <?php $kategori_produk = $this->Crud_m->view_where_orderings('products_category',array('products_cat_status'=>'publish'),'products_cat_id','ASC'); ?>
+                          <?php foreach ($kategori_produk as $post) {  ?>
                             <!-- swiper-slide-->
                             <div class="swiper-slide hov_zoom">
-                                <img  src="<?php echo base_url()?>bahan/frontend/images/bg/14.jpg"   alt="">
-                                <a href="<?php echo base_url()?>bahan/frontend/images/bg/14.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a>
+                              <?php if(empty($post->products_cat_gambar)) {
+                                  echo "<img src='".base_url()."bahan/foto_products/noimage.jpg'>";
+                                }else {
+                                  echo " <img src='".base_url('./bahan/foto_products/'.$post->products_cat_gambar)."'>
+                                          <a href='".base_url('./bahan/foto_products/'.$post->products_cat_gambar)."' class='box-media-zoom   popup-image'><i class='fal fa-search'></i></a>
+                                  ";}
+                               ?>
                                 <div class="thumb-info">
-                                    <h3><a href="portfolio-single.html">Alone on Nature</a></h3>
-                                    <p>Here you can place an optional description of your  Project</p>
+                                    <h3><a href="#"><?php echo $post->products_cat_judul?></a></h3>
+                                    <p><?php echo $post->products_cat_desk?></p>
                                 </div>
                             </div>
                             <!-- swiper-slide end-->
-                            <!-- swiper-slide-->
-                            <div class="swiper-slide hov_zoom">
-                                <img  src="<?php echo base_url()?>bahan/frontend/images/bg/2.jpg"   alt="">
-                                <a href="<?php echo base_url()?>bahan/frontend/images/bg/2.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a>
-                                <div class="thumb-info">
-                                    <h3><a href="portfolio-single.html">The Other Side of Me</a></h3>
-                                    <p>Here you can place an optional description of your  Project</p>
-                                </div>
-                            </div>
-                            <!-- swiper-slide end-->
-                            <!-- swiper-slide-->
-                            <div class="swiper-slide hov_zoom">
-                                <img  src="<?php echo base_url()?>bahan/frontend/images/bg/11.jpg"   alt="">
-                                <a href="<?php echo base_url()?>bahan/frontend/images/bg/11.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a>
-                                <div class="thumb-info">
-                                    <h3><a href="portfolio-single.html">Forever Young</a></h3>
-                                    <p>Here you can place an optional description of your  Project</p>
-                                </div>
-                            </div>
-                            <!-- swiper-slide end-->
-                            <!-- swiper-slide-->
-                            <div class="swiper-slide hov_zoom">
-                                <img  src="<?php echo base_url()?>bahan/frontend/images/bg/3.jpg"   alt="">
-                                <a href="<?php echo base_url()?>bahan/frontend/images/bg/3.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a>
-                                <div class="thumb-info">
-                                    <h3><a href="portfolio-single.html">Travelling is Fun</a></h3>
-                                    <p>Here you can place an optional description of your  Project</p>
-                                </div>
-                            </div>
-                            <!-- swiper-slide end-->
-                            <!-- swiper-slide-->
-                            <div class="swiper-slide hov_zoom">
-                                <img  src="<?php echo base_url()?>bahan/frontend/images/bg/5.jpg"   alt="">
-                                <a href="<?php echo base_url()?>bahan/frontend/images/bg/5.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a>
-                                <div class="thumb-info">
-                                    <h3><a href="portfolio-single.html">Norway Nature</a></h3>
-                                    <p>Here you can place an optional description of your  Project</p>
-                                </div>
-                            </div>
-                            <!-- swiper-slide end-->
-                            <!-- swiper-slide-->
-                            <div class="swiper-slide hov_zoom">
-                                <img  src="<?php echo base_url()?>bahan/frontend/images/bg/9.jpg"   alt="">
-                                <a href="<?php echo base_url()?>bahan/frontend/images/bg/9.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a>
-                                <div class="thumb-info">
-                                    <h3><a href="portfolio-single.html">A Wonderful Life</a></h3>
-                                    <p>Here you can place an optional description of your  Project</p>
-                                </div>
-                            </div>
-                            <!-- swiper-slide end-->
-                            <!-- swiper-slide-->
-                            <div class="swiper-slide swiper-link-wrap hov_zoom">
-                                <img  src="<?php echo base_url()?>bahan/frontend/images/bg/7.jpg"   alt="">
-                                <a href="<?php echo base_url()?>bahan/frontend/images/bg/7.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a>
-                                <div class="thumb-info">
-                                    <h3><a href="portfolio-single.html">Alone on Nature</a></h3>
-                                    <p>Here you can place an optional description of your  Project</p>
-                                </div>
-                                <a href="portfolio.html" class="swiper-link"><span>View Portfolio</span></a>
-                            </div>
-                            <!-- swiper-slide end-->
+                          <?php } ?>
                         </div>
                     </div>
                 </div>
