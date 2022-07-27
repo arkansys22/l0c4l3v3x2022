@@ -30,9 +30,9 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Title</th>
-                  <th>Action</th>
+                  <th>Tanggal</th>
+                  <th>Judul</th>
+                  <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
