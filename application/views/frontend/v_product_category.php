@@ -30,97 +30,100 @@
 </head>
 
 <body>
-  <div class="off_canvars_overlay"> </div>
-  <?php $this->load->view('frontend/menu')?>
-  <!--breadcrumbs area start-->
-  <div class="breadcrumbs_area">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-                  <div class="breadcrumb_content">
-                      <ul>
-                          <li><a href="<?php echo base_url()?>">Beranda</a></li>
-                          <li>Kategori Produk</li>
-                          <li><?php echo $this->uri->segment(3) ?></li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
+  <div class="loader-wrap">
+      <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
       </div>
   </div>
-  <!--breadcrumbs area end-->
-  <div class="shop_area shop_reverse">
-      <div class="container">
-          <div class="row">
+  <div id="main">
+    <?php $this->load->view('frontend/menu')?>
+    <div id="wrapper">
+        <!--content -->
+        <div class="content">
+          <div class="column-image">
+              <div class="bg"  data-bg="images/bg/27.jpg"></div>
+              <div class="overlay"></div>
+              <div class="column-title">
+                  <h2><?php echo $posts->products_cat_judul ?></h2>
+                  <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</h3>
+              </div>
+              <div class="column-notifer">
+                  <div class="scroll-down-wrap transparent_sdw">
+                      <div class="mousey">
+                          <div class="scroller"></div>
+                      </div>
+                      <span>Scroll down  to Discover</span>
+                  </div>
+              </div>
+              <div class="fixed-column-dec"></div>
+          </div>
+          <div class="column-wrapper column-wrapper_smallpadding">
+              <div class="gallery-items min-pad   three-column fl-wrap lightgallery">
+                <?php $produk = $this->Crud_m->view_where_orderings('products',array('products_status'=>'publish','products_cat_id'=> $posts->products_cat_id),'products_id','ASC'); ?>
+                <?php foreach ($produk as $post) {  ?>
+                  <div class="gallery-item">
+                      <div class="grid-item-holder hov_zoom">
+                        <?php if(empty($post->products_cat_gambar)) {
+                            echo "<img src='".base_url()."bahan/foto_products/noimage.jpg'>";
+                          }else {
+                            echo " <img src='".base_url('./bahan/foto_products/'.$post->products_gambar)."'>
+                                    <a href='".base_url('./bahan/foto_products/'.$post->products_gambar)."' class='box-media-zoom   popup-image'><i class='fal fa-search'></i></a>
+                            ";}
+                         ?>
 
-              <div class="col-lg-12 col-md-12">
-
-                  <!--shop banner area start-->
-                  <div class="shop_banner_area mb-30">
-                      <div class="row">
-                          <div class="col-12">
-                              <div class="shop_banner_thumb">
-                                  <img src="<?php echo base_url()?>bahan/frontend/img/bg/banner23.jpg" alt="">
-                              </div>
+                          <div class="thumb-info">
+                              <h3><a href="#"><?php echo $post->products_judul?></a></h3>
+                              <p><?php echo $post->products_desk?></p>
                           </div>
                       </div>
                   </div>
-                  <!--shop banner area end-->
 
-                  <div class="row shop_wrapper">
-                    <?php  foreach ($posts as $post_new){
-                                   $isi = character_limiter($post_new->products_desk,200);
-                                   ?>
-                      <div class="col-lg-3 col-md-4 col-6 ">
-                          <article class="single_product">
-                              <figure>
-                                  <div class="product_thumb">
-                                      <a class="primary_img" href="<?php echo base_url("product_detail/$post_new->products_judul_seo ") ?>">
-                                        <img <?php
-                                            if(empty($post_new->products_gambar)) {
-                                              echo "<img src='".base_url()."bahan/layout_foto_promo.png'>";
-                                            }else {
-                                              echo " <img src='".base_url()."bahan/foto_products/".$post_new->products_gambar."'> ";}
-                                            ?>
-                                      </a>
-                                      <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product7.jpg" alt=""></a>
-                                  </div>
-                                  <div class="product_content grid_content">
-                                      <div class="product_content_inner">
-                                          <p class="manufacture_product"><?php echo $post_new->products_cat_judul?></p>
-                                          <h4 class="product_name"><a href="<?php echo base_url("product_detail/$post_new->products_judul_seo") ?>"><?php echo $post_new->products_judul?></a></h4>
-                                          <div class="price_box">
-                                              <span class="std_price">Rp. <?php echo number_format($post_new->products_harga,0,',','.')?></span>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                              </figure>
-                          </article>
-                      </div>
-                      <?php } ?>
-                  </div>
-
-                  <div class="shop_toolbar t_bottom">
-                      <div class="pagination">
-                        <?php echo $pagination; ?>
-
-                      </div>
-                  </div>
-                  <!--shop toolbar end-->
-                  <!--shop wrapper end-->
+                  <?php } ?>
               </div>
           </div>
-      </div>
+        </div>
+        <!--content end-->
+        <!--share-wrapper-->
+        <div class="share-wrapper">
+            <div class="share-container fl-wrap  isShare"></div>
+        </div>
+        <!--share-wrapper end-->
+    </div>
+    <div class="sb-overlay"></div>
+    <div class="hiiden-sidebar-wrap outsb">
+        <!-- sb-widget-wrap-->
+        <div class="sb-widget-wrap fl-wrap">
+            <h3>Office & Workshop</h3>
+            <div class="sb-widget  fl-wrap">
+                <p>Office : Jl. Kelapa puyuh raya blok KE No.19, Kelapa Gading, Jakarta Utara</p>
+                <p>Workshop & Office : Jl. Caringin No. 235 Bandung, Jawa Barat</p>
+                <p>Workshop & Office : Jl. Dewi Sri No. 19 Renon Denpasar, Bali</p>
+                <p>Workshop & Office : Jl. Pahlawan Ende No. 257, Labuan Baju, NTT</p>
+            </div>
+        </div>
+        <!-- sb-widget-wrap end-->
+        <!-- sb-widget-wrap-->
+        <div class="sb-widget-wrap fl-wrap">
+            <h3>We're Are Social</h3>
+            <div class="sb-widget    fl-wrap">
+                <div class="sidebar-social fl-wrap">
+                    <ul>
+                        <li><a href="<?php echo $identitas->facebook?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="<?php echo $identitas->instagram?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="<?php echo $identitas->youtube?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="element">
+        <div class="element-item"></div>
+    </div>
   </div>
 
+  <?php $this->load->view('frontend/js')?>
 
-  			</div>
-  		</div>
-  	</div>
-
-    <?php $this->load->view('frontend/bottom')?>
-    <?php $this->load->view('frontend/js')?>
-</div>
 </body>
 </html>

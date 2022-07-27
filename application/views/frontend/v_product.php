@@ -30,29 +30,101 @@
 
 </head>
 
-<body class="has-spotlight ashade-smooth-scroll">
+<body>
+  <div class="loader-wrap">
+      <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+      </div>
+  </div>
+  <div id="main">
     <?php $this->load->view('frontend/menu')?>
-    <!-- Content -->
-    <div class="ashade-page-title-wrap">
-        <h1 class="ashade-page-title">
-            <span>Our Works</span>
-            All of works
-        </h1>
+    <div id="wrapper">
+        <!--content -->
+        <div class="content">
+          <div class="column-image">
+              <div class="bg"  data-bg="images/bg/27.jpg"></div>
+              <div class="overlay"></div>
+              <div class="column-title">
+                  <h2>My Portfolio</h2>
+                  <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</h3>
+              </div>
+              <div class="column-notifer">
+                  <div class="scroll-down-wrap transparent_sdw">
+                      <div class="mousey">
+                          <div class="scroller"></div>
+                      </div>
+                      <span>Scroll down  to Discover</span>
+                  </div>
+              </div>
+              <div class="fixed-column-dec"></div>
+          </div>
+          <div class="column-wrapper column-wrapper_smallpadding">
+              <div class="gallery-items min-pad   three-column fl-wrap lightgallery">
+                <?php $produk = $this->Crud_m->view_where_orderings('products',array('products_status'=>'publish'),'products_id','ASC'); ?>
+                <?php foreach ($produk as $post) {  ?>
+                  <div class="gallery-item">
+                      <div class="grid-item-holder hov_zoom">
+                        <?php if(empty($post->products_cat_gambar)) {
+                            echo "<img src='".base_url()."bahan/foto_products/noimage.jpg'>";
+                          }else {
+                            echo " <img src='".base_url('./bahan/foto_products/'.$post->products_gambar)."'>
+                                    <a href='".base_url('./bahan/foto_products/'.$post->products_gambar)."' class='box-media-zoom   popup-image'><i class='fal fa-search'></i></a>
+                            ";}
+                         ?>
+
+                          <div class="thumb-info">
+                              <h3><a href="#"><?php echo $post->products_judul?></a></h3>
+                              <p><?php echo $post->products_desk?></p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <?php } ?>
+              </div>
+          </div>
+        </div>
+        <!--content end-->
+        <!--share-wrapper-->
+        <div class="share-wrapper">
+            <div class="share-container fl-wrap  isShare"></div>
+        </div>
+        <!--share-wrapper end-->
     </div>
-<main class="ashade-content-wrap">
-	<div class="ashade-content-scroll">
-    <?php $this->load->view('frontend/konten')?>
-    <?php $this->load->view('frontend/bottom2')?>
-  </div><!-- .ashade-content-scroll -->
-</main>
-<div class="ashade-to-top-wrap ashade-back-wrap">
-    <div class="ashade-back is-to-top">
-        <span>Back to</span>
-        <span>Top</span>
+    <div class="sb-overlay"></div>
+    <div class="hiiden-sidebar-wrap outsb">
+        <!-- sb-widget-wrap-->
+        <div class="sb-widget-wrap fl-wrap">
+            <h3>Office & Workshop</h3>
+            <div class="sb-widget  fl-wrap">
+                <p>Office : Jl. Kelapa puyuh raya blok KE No.19, Kelapa Gading, Jakarta Utara</p>
+                <p>Workshop & Office : Jl. Caringin No. 235 Bandung, Jawa Barat</p>
+                <p>Workshop & Office : Jl. Dewi Sri No. 19 Renon Denpasar, Bali</p>
+                <p>Workshop & Office : Jl. Pahlawan Ende No. 257, Labuan Baju, NTT</p>
+            </div>
+        </div>
+        <!-- sb-widget-wrap end-->
+        <!-- sb-widget-wrap-->
+        <div class="sb-widget-wrap fl-wrap">
+            <h3>We're Are Social</h3>
+            <div class="sb-widget    fl-wrap">
+                <div class="sidebar-social fl-wrap">
+                    <ul>
+                        <li><a href="<?php echo $identitas->facebook?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="<?php echo $identitas->instagram?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="<?php echo $identitas->youtube?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<?php $this->load->view('frontend/aside')?>
-<?php $this->load->view('frontend/js')?>
-</div>
+    <div class="element">
+        <div class="element-item"></div>
+    </div>
+  </div>
+
+  <?php $this->load->view('frontend/js')?>
+
 </body>
 </html>

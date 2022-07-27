@@ -52,57 +52,23 @@ class Product extends CI_Controller {
 		$this->pagination->initialize($config);
 		$this->load->view('frontend/v_product',$data);
 	}
-
-	public function category()
+	public function product_category($products_cat_id)
 	{
-		$query = $this->Crud_m->view_where('products_category',array('products_cat_judul_seo' => $this->uri->segment(3)));
-		if ($query->num_rows()<=0){
-			redirect('main');
-		}else{
-			$row = $query->row_array();
-			$jumlah= $this->Crud_m->view_where('products',array('products_status'=>'publish','products_disc_status'=>'NON PROMO','products_cat_id' => $row['products_cat_id']))->num_rows();
-			$config['base_url'] = base_url().'product/category/p/'.$this->uri->segment(3);
-			$config['total_rows'] = $jumlah;
-			$config['per_page_product'] = 12;
-			$config['per_page'] = 12;
-			$config['full_tag_open']    = "<ul class='cp_content color-1'>";
-			$config['full_tag_close']   = "</ul>";
-			$config['num_tag_open']     = "<li>";
-			$config['num_tag_close']    = "</li>";
-			$config['cur_tag_open']     = "<li class='active'><a href='#'>";
-			$config['cur_tag_close']    = "<span class='sr-only'></span></a></li>";
-			$config['next_link']        = "<i class='fa fa-angle-right'></i>";
-			$config['next_tag_open']    = "<li>";
-			$config['next_tagl_close']  = "</li>";
-			$config['prev_link']        = "<i class='fa fa-angle-left'></i>";
-			$config['prev_tag_open']    = "<li>";
-			$config['prev_tagl_close']  = "</li>";
-			$config['first_link']       = "<i class='fa fa-angle-left'></i><i class='fa fa-angle-left'></i>";
-			$config['first_tag_open']   = "<li>";
-			$config['first_tagl_close'] = "</li>";
-			$config['last_link']        = "<i class='fa fa-angle-right'></i><i class='fa fa-angle-right'></i>";
-			$config['last_tag_open']    = "<li>";
-			$config['last_tagl_close']  = "</li>";
 
-			if ($this->uri->segment('4')==''){
-				$dari = 0;
-			}else{
-				$dari = $this->uri->segment('4');
-			}
-			$this->pagination->initialize($config);
-			if (is_numeric($dari)) {
-				$data['identitas']= $this->Crud_m->get_by_id_identitas($id='1');
-				$data['posts'] = $this->Crud_m->view_join_one('products','products_category','products_cat_id',array('products_status'=>'publish','products_disc_status'=>'NON PROMO','products_cat_judul_seo' => $this->uri->segment(3),'products.products_cat_id' => $row['products_cat_id']),'products_id','DESC',$dari,$config['per_page_product']);
-				$data['posts_cat_product'] = $this->Crud_m->view_one_limit('products_category','products_cat_status','products_cat_id','RANDOM',$dari,$config['per_page']);
-
-			}else{
-				redirect('main');
-			}
-
-			$data['pagination'] = $this->pagination->create_links();
-			$this->load->view('frontend/v_product_category', $data);
-		}
-	}
+			$row = $this->Crud_m->get_by_id_products_category($products_cat_id);
+			if ($row)
+				{
+					$data['posts']            = $this->Crud_m->get_by_id_products_category($products_cat_id);
+					$data['identitas']= $this->Crud_m->get_by_id_identitas($id='1');
+					$this->load->view('frontend/v_product_category', $data);
+				}
+				else
+						{
+							$this->session->set_flashdata('message', '<div class="alert alert-dismissible alert-danger">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>Berita tidak ditemukan</b></div>');
+							redirect(base_url());
+						}
+				}
 
 	public function detail($products_id)
   {
@@ -111,7 +77,6 @@ class Product extends CI_Controller {
     	if ($row)
         {
 					$data['posts']            = $this->Crud_m->get_by_id_products($products_id);
-					$data['category'] = $this->Crud_m->view_ordering('products_category','products_cat_id','DESC');
 					$data['identitas']= $this->Crud_m->get_by_id_identitas($id='1');
     			$this->load->view('frontend/v_product_detail', $data);
     		}
