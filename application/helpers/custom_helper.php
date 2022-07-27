@@ -6,6 +6,14 @@ function cek_session_akses($id){
     redirect(base_url().'paneladmin/home');
   }
 }
+
+function cek_session_super_user($id){
+  $ci = & get_instance();
+  $session = $ci->db->query("SELECT * FROM user WHERE user.id_session='$id'")->num_rows();
+  if ($session == '0' AND $ci->session->userdata('level') != '2'){
+    redirect(base_url().'paneladmin/home');
+  }
+}
 function hari_ini($w){
     $seminggu = array("Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu");
     $hari_ini = $seminggu[$w];

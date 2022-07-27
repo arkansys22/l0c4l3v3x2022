@@ -83,6 +83,8 @@
           </p>
         </a>
       </li>
+      <?php }?>
+      <?php  if($this->session->level=='1'){ ?>
       <li class="nav-item">
         <a href="<?php echo base_url(); ?>paneladmin/konsumen" class="nav-link" >
           <i class="nav-icon fas fa-user-check"></i>
@@ -92,6 +94,7 @@
         </a>
       </li>
 
+
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon far fas fa-fw fa-users"></i>
@@ -100,17 +103,17 @@
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
-        <?php }?>
+
 
         <ul class="nav nav-treeview">
-            <?php  if($this->session->level=='1'){ ?>
+
           <li class="nav-item">
             <a href="<?php echo base_url(); ?>paneladmin/divisi" class="nav-link ">
               <i class="far fa-circle nav-icon"></i>
               <p>Divisi / Posisi</p>
             </a>
           </li>
-          <?php } ?>
+
 
           <li class="nav-item">
             <a href="<?php echo base_url(); ?>paneladmin/lowongan" class="nav-link">
@@ -131,7 +134,9 @@
             </a>
           </li>
         </ul>
+        <?php } ?>
       </li>
+
 
       <li class="nav-item">
         <a href="<?php echo base_url(); ?>paneladmin/pengumuman" class="nav-link " >
@@ -154,14 +159,14 @@
           <?php }?>
 
           <ul class="nav nav-treeview">
-              <?php  if($this->session->level=='1'){ ?>
+
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>paneladmin/products_cat" class="nav-link ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Kategori</p>
               </a>
             </li>
-            <?php } ?>
+
 
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>paneladmin/products" class="nav-link">
