@@ -46,7 +46,7 @@
               <div class="overlay"></div>
               <div class="column-title">
                   <h2><?php echo $posts->products_cat_judul ?></h2>
-                  <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</h3>
+                  <h3><?php echo $posts->products_cat_desk ?></h3>
               </div>
               <div class="column-notifer">
                   <div class="scroll-down-wrap transparent_sdw">
