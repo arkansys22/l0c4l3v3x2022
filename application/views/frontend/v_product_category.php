@@ -75,7 +75,7 @@
 
                           <div class="thumb-info">
                               <h3><a href="<?php echo base_url() ?>portfolio-detail/<?php echo $post->products_judul_seo?>"><?php echo $post->products_judul?></a></h3>
-                              <p><?php echo $post->products_desk?></p>
+                              
                           </div>
                       </div>
                   </div>
