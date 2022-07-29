@@ -60,11 +60,12 @@
           </div>
           <div class="column-wrapper column-wrapper_smallpadding">
               <div class="gallery-items min-pad   three-column fl-wrap lightgallery">
-                <?php $produk = $this->Crud_m->view_where_orderings('products',array('products_status'=>'publish','products_cat_id'=> $posts->products_cat_id),'products_id','ASC'); ?>
+
+                <?php $produk = $this->Crud_m->view_join_where_orderings('products','products_category','products_cat_id',array('products_status'=>'publish'),'products_id','ASC'); ?>
                 <?php foreach ($produk as $post) {  ?>
                   <div class="gallery-item">
                       <div class="grid-item-holder hov_zoom">
-                        <?php if(empty($post->products_cat_gambar)) {
+                        <?php if(empty($post->products_gambar)) {
                             echo "<img src='".base_url()."bahan/foto_products/noimage.jpg'>";
                           }else {
                             echo " <img src='".base_url('./bahan/foto_products/'.$post->products_gambar)."'>
@@ -73,7 +74,7 @@
                          ?>
 
                           <div class="thumb-info">
-                              <h3><a href="#"><?php echo $post->products_judul?></a></h3>
+                              <h3><a href="<?php echo base_url() ?>portfolio-detail/<?php echo $post->products_judul_seo?>"><?php echo $post->products_judul?></a></h3>
                               <p><?php echo $post->products_desk?></p>
                           </div>
                       </div>
