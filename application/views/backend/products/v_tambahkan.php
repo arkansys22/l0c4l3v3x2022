@@ -44,7 +44,7 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label>Judul</label>
-                        <input type="text" class="form-control" name="products_judul" placeholder="Interesting Title Ideas">
+                        <input type="text" class="form-control" name="products_judul" placeholder="Judul Konten">
                       </div>
                     </div>
                   </div>
@@ -67,8 +67,8 @@
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label>URL Video</label>
-                    <input type="text" class="form-control" name="products_url" placeholder="Link Video Youtube">
+                    <label>Tahun</label>
+                    <input type="text" class="form-control" name="products_tahun" placeholder="Tahun Pekerjaan">
                   </div>
                 </div>
               </div>

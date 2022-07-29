@@ -67,8 +67,8 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>URL Video</label>
-                        <input type="text" class="form-control" name="products_url" value="<?php echo $rows['products_url'] ?>">
+                        <label>Tahun</label>
+                        <input type="text" class="form-control" name="products_tahun" value="<?php echo $rows['products_tahun'] ?>">
                       </div>
                     </div>
                   </div>

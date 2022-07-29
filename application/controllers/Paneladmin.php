@@ -1305,7 +1305,7 @@ class Paneladmin extends CI_Controller {
 													'products_judul'=>$this->db->escape_str($this->input->post('products_judul')),
 													'products_judul_seo'=>$this->mylibrary->seo_title($this->input->post('products_judul')),
 													'products_desk'=>$this->input->post('products_desk'),
-													'products_url'=>$this->input->post('products_url'),
+													'products_tahun'=>$this->input->post('products_tahun'),
 													'products_cat_id'=>$this->input->post('products_cat_id'),
 													'products_post_hari'=>hari_ini(date('w')),
 													'products_post_tanggal'=>date('Y-m-d'),
@@ -1321,7 +1321,7 @@ class Paneladmin extends CI_Controller {
 													'products_judul'=>$this->db->escape_str($this->input->post('products_judul')),
 													'products_judul_seo'=>$this->mylibrary->seo_title($this->input->post('products_judul')),
 													'products_desk'=>$this->input->post('products_desk'),
-													'products_url'=>$this->input->post('products_url'),
+													'products_tahun'=>$this->input->post('products_tahun'),
 													'products_cat_id'=>$this->input->post('products_cat_id'),
 													'products_post_hari'=>hari_ini(date('w')),
 													'products_post_tanggal'=>date('Y-m-d'),
@@ -1454,7 +1454,7 @@ class Paneladmin extends CI_Controller {
 											'products_judul'=>$this->db->escape_str($this->input->post('products_judul')),
 											'products_judul_seo'=>$this->mylibrary->seo_title($this->input->post('products_judul')),
 											'products_desk'=>$this->input->post('products_desk'),
-											'products_url'=>$this->input->post('products_url'),
+											'products_tahun'=>$this->input->post('products_tahun'),
 											'products_cat_id'=>$this->input->post('products_cat_id'),
 											'products_update_hari'=>hari_ini(date('w')),
 											'products_update_tanggal'=>date('Y-m-d'),
@@ -1463,13 +1463,57 @@ class Paneladmin extends CI_Controller {
 											'products_keyword'=>$tag);
 											$where = array('products_id' => $this->input->post('products_id'));
 							 				$this->db->update('products', $data, $where);
+						}elseif ($hasilgmbr2['file_name']=='' && $hasilgmbr3['file_name']=='' && $hasilgmbr4['file_name']=='' && $hasilgmbr5['file_name']=='' && $hasilgmbr6['file_name']==''){
+										$data = array(
+											'products_update_oleh'=>$this->session->username,
+											'products_judul'=>$this->db->escape_str($this->input->post('products_judul')),
+											'products_judul_seo'=>$this->mylibrary->seo_title($this->input->post('products_judul')),
+											'products_desk'=>$this->input->post('products_desk'),
+											'products_tahun'=>$this->input->post('products_tahun'),
+											'products_harga'=>$this->input->post('products_harga'),
+											'products_cat_id'=>$this->input->post('products_cat_id'),
+											'products_update_hari'=>hari_ini(date('w')),
+											'products_update_tanggal'=>date('Y-m-d'),
+											'products_update_jam'=>date('H:i:s'),
+											'products_gambar'=>$hasil22['file_name'],
+											'products_meta_desk'=>$this->input->post('products_meta_desk'),
+											'products_keyword'=>$tag);
+											$where = array('products_id' => $this->input->post('products_id'));
+											$_image = $this->db->get_where('products',$where)->row();
+											$query = $this->db->update('products',$data,$where);
+											if($query){
+												unlink("bahan/foto_products/".$_image->products_gambar);
+											}
+						}}elseif ($hasilgmbr3['file_name']=='' && $hasilgmbr4['file_name']=='' && $hasilgmbr5['file_name']=='' && $hasilgmbr6['file_name']==''){
+										$data = array(
+											'products_update_oleh'=>$this->session->username,
+											'products_judul'=>$this->db->escape_str($this->input->post('products_judul')),
+											'products_judul_seo'=>$this->mylibrary->seo_title($this->input->post('products_judul')),
+											'products_desk'=>$this->input->post('products_desk'),
+											'products_tahun'=>$this->input->post('products_tahun'),
+											'products_harga'=>$this->input->post('products_harga'),
+											'products_cat_id'=>$this->input->post('products_cat_id'),
+											'products_update_hari'=>hari_ini(date('w')),
+											'products_update_tanggal'=>date('Y-m-d'),
+											'products_update_jam'=>date('H:i:s'),
+											'products_gambar'=>$hasil22['file_name'],
+											'products_gambar2'=>$hasilgmbr2['file_name'],
+											'products_meta_desk'=>$this->input->post('products_meta_desk'),
+											'products_keyword'=>$tag);
+											$where = array('products_id' => $this->input->post('products_id'));
+											$_image = $this->db->get_where('products',$where)->row();
+											$query = $this->db->update('products',$data,$where);
+											if($query){
+												unlink("bahan/foto_products/".$_image->products_gambar);
+												unlink("bahan/foto_products/".$_image->products_gambar2);
+											}
 						}elseif ($hasilgmbr4['file_name']=='' && $hasilgmbr5['file_name']=='' && $hasilgmbr6['file_name']==''){
 										$data = array(
 											'products_update_oleh'=>$this->session->username,
 											'products_judul'=>$this->db->escape_str($this->input->post('products_judul')),
 											'products_judul_seo'=>$this->mylibrary->seo_title($this->input->post('products_judul')),
 											'products_desk'=>$this->input->post('products_desk'),
-											'products_url'=>$this->input->post('products_url'),
+											'products_tahun'=>$this->input->post('products_tahun'),
 											'products_harga'=>$this->input->post('products_harga'),
 											'products_cat_id'=>$this->input->post('products_cat_id'),
 											'products_update_hari'=>hari_ini(date('w')),
@@ -1488,13 +1532,40 @@ class Paneladmin extends CI_Controller {
 												unlink("bahan/foto_products/".$_image->products_gambar2);
 												unlink("bahan/foto_products/".$_image->products_gambar3);
 											}
+						}elseif ($hasilgmbr5['file_name']=='' && $hasilgmbr6['file_name']==''){
+										$data = array(
+											'products_update_oleh'=>$this->session->username,
+											'products_judul'=>$this->db->escape_str($this->input->post('products_judul')),
+											'products_judul_seo'=>$this->mylibrary->seo_title($this->input->post('products_judul')),
+											'products_desk'=>$this->input->post('products_desk'),
+											'products_tahun'=>$this->input->post('products_tahun'),
+											'products_harga'=>$this->input->post('products_harga'),
+											'products_cat_id'=>$this->input->post('products_cat_id'),
+											'products_update_hari'=>hari_ini(date('w')),
+											'products_update_tanggal'=>date('Y-m-d'),
+											'products_update_jam'=>date('H:i:s'),
+											'products_gambar'=>$hasil22['file_name'],
+											'products_gambar2'=>$hasilgmbr2['file_name'],
+											'products_gambar3'=>$hasilgmbr3['file_name'],
+											'products_gambar4'=>$hasilgmbr4['file_name'],
+											'products_meta_desk'=>$this->input->post('products_meta_desk'),
+											'products_keyword'=>$tag);
+											$where = array('products_id' => $this->input->post('products_id'));
+											$_image = $this->db->get_where('products',$where)->row();
+											$query = $this->db->update('products',$data,$where);
+											if($query){
+												unlink("bahan/foto_products/".$_image->products_gambar);
+												unlink("bahan/foto_products/".$_image->products_gambar2);
+												unlink("bahan/foto_products/".$_image->products_gambar3);
+												unlink("bahan/foto_products/".$_image->products_gambar4);
+											}
 						}else{
 										$data = array(
 											'products_update_oleh'=>$this->session->username,
 											'products_judul'=>$this->db->escape_str($this->input->post('products_judul')),
 											'products_judul_seo'=>$this->mylibrary->seo_title($this->input->post('products_judul')),
 											'products_desk'=>$this->input->post('products_desk'),
-											'products_url'=>$this->input->post('products_url'),
+											'products_tahun'=>$this->input->post('products_tahun'),
 											'products_harga'=>$this->input->post('products_harga'),
 											'products_cat_id'=>$this->input->post('products_cat_id'),
 											'products_update_hari'=>hari_ini(date('w')),

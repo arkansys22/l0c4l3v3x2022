@@ -180,8 +180,8 @@
                     <div class="caption-wrap fl-wrap det-anim">
                         <ul>
                             <li>
-                                <span>Lokasi</span>
-                                <a href="#">NY , USA</a>
+                                <span>Tahun</span>
+                                <a href="#"><?php echo $posts->products_tahun ?></a>
                             </li>
                             <?php $cat = $this->Crud_m->view_join_where_array('products_category','products','products_cat_id',array ('products.products_cat_id' => $posts->products_cat_id))->row_array(); ?>
                             <li>
