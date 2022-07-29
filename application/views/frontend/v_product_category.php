@@ -61,7 +61,7 @@
           <div class="column-wrapper column-wrapper_smallpadding">
               <div class="gallery-items min-pad   three-column fl-wrap lightgallery">
 
-                <?php $produk = $this->Crud_m->view_join_where_orderings('products','products_category','products_cat_id',array('products_status'=>'publish'),'products_id','ASC'); ?>
+                <?php $produk = $this->Crud_m->view_where_orderings('products',array('products_status'=>'publish','products_cat_id'=>$posts->products_cat_id),'products_id','ASC'); ?>
                 <?php foreach ($produk as $post) {  ?>
                   <div class="gallery-item">
                       <div class="grid-item-holder hov_zoom">
