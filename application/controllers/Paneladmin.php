@@ -1484,7 +1484,7 @@ class Paneladmin extends CI_Controller {
 											if($query){
 												unlink("bahan/foto_products/".$_image->products_gambar);
 											}
-						}}elseif ($hasilgmbr3['file_name']=='' && $hasilgmbr4['file_name']=='' && $hasilgmbr5['file_name']=='' && $hasilgmbr6['file_name']==''){
+						}elseif ($hasilgmbr3['file_name']=='' && $hasilgmbr4['file_name']=='' && $hasilgmbr5['file_name']=='' && $hasilgmbr6['file_name']==''){
 										$data = array(
 											'products_update_oleh'=>$this->session->username,
 											'products_judul'=>$this->db->escape_str($this->input->post('products_judul')),
