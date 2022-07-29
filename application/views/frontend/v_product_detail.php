@@ -190,13 +190,14 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="#" class="btn fl-btn det-anim" target="_blank">View Project</a>
+                    <!-- <a href="#" class="btn fl-btn det-anim" target="_blank">View Project</a>
                     <div class="content-nav det-anim">
                         <ul>
                             <li><a href="#" class="ajax ln"><i class="fal fa-angle-left"></i><span class="tooltip">Prev - Project Title</span></a></li>
                             <li><a href="#" class="ajax rn"><i class="fal fa-angle-right"></i><span class="tooltip">Next - Project Title</span></a></li>
                         </ul>
-                    </div>
+                    </div>  -->
+
                 </div>
             </div>
             <!-- project details  end-->
