@@ -42,7 +42,12 @@
         <!--content -->
         <div class="content">
           <div class="column-image">
-              <div class="bg"  data-bg="images/bg/27.jpg"></div>
+
+            <?php if(empty($posts->products_cat_gambar)) {
+                echo "<div class='bg'  data-bg='".base_url()."bahan/foto_products/noimage.jpg'></div>";
+              }else {
+                echo " <div class='bg'  data-bg='".base_url('./bahan/foto_products/'.$posts->products_cat_gambar)."'></div>";}
+             ?>
               <div class="overlay"></div>
               <div class="column-title">
                   <h2><?php echo $posts->products_cat_judul ?></h2>
@@ -75,7 +80,7 @@
 
                           <div class="thumb-info">
                               <h3><a href="<?php echo base_url() ?>portfolio-detail/<?php echo $post->products_judul_seo?>"><?php echo $post->products_judul?></a></h3>
-                              
+
                           </div>
                       </div>
                   </div>
