@@ -29,7 +29,7 @@
                     <!--second level -->
                     <ul>
                         <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Desain</a></li>
+                        <li><a href="<?php echo base_url()?>portfolio/booth-design">Desain</a></li>
                         <li><a href="#">Equipment</a></li>
                         <li><a href="#">Workshop</a></li>
                     </ul>

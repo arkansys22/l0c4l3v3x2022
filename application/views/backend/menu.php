@@ -156,7 +156,6 @@
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
-          <?php }?>
 
           <ul class="nav nav-treeview">
 
@@ -183,6 +182,31 @@
 
           </ul>
         </li>
+        <li class="nav-item ">
+          <a href="<?php echo base_url(); ?>paneladmin/gallery" class="nav-link">
+            <i class="nav-icon fas fa-photo-video"></i>
+            <p>
+              Gallery
+            </p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a href="<?php echo base_url(); ?>paneladmin/equipment" class="nav-link">
+            <i class="nav-icon fas fa-photo-video"></i>
+            <p>
+              Equipment
+            </p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a href="<?php echo base_url(); ?>paneladmin/workshop" class="nav-link">
+            <i class="nav-icon fas fa-donate"></i>
+            <p>
+              Workshop
+            </p>
+          </a>
+        </li>
+        <?php }?>
         <?php  if($this->session->level=='1'){ ?>
         <li class="nav-item ">
           <a href="<?php echo base_url(); ?>paneladmin/testimonial" class="nav-link">

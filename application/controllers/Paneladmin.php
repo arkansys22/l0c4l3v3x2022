@@ -832,6 +832,683 @@ class Paneladmin extends CI_Controller {
 	}
 	/* konsumen - tutup */
 
+	/*	Bagian untuk gallery - Pembuka	*/
+	public function gallery()
+	{
+		$data['karyawan_menu_open']   = '';
+
+		cek_session_akses ('gallery',$this->session->id_session);
+				if ($this->session->level=='1'){
+						$data['record'] = $this->Crud_m->view_where_ordering('gallery',array('gallery_status'=>'publish'),'gallery_id','DESC');
+				}else{
+						$data['record'] = $this->Crud_m->view_where_ordering('gallery',array('gallery_post_oleh'=>$this->session->username,'gallery_status'=>'publish'),'gallery_id','DESC');
+				}
+				$this->load->view('backend/gallery/v_daftar', $data);
+	}
+	public function gallery_storage_bin()
+	{
+
+		cek_session_akses ('gallery',$this->session->id_session);
+				if ($this->session->level=='1'){
+						$data['record'] = $this->Crud_m->view_where_ordering('gallery',array('gallery_status'=>'delete'),'gallery_id','DESC');
+				}else{
+						$data['record'] = $this->Crud_m->view_where_ordering('gallery',array('gallery_post_oleh'=>$this->session->username,'gallery_status'=>'delete'),'gallery_id','DESC');
+				}
+
+				$data['identitas_stat']   = '';
+				$this->load->view('backend/gallery/v_daftar_hapus', $data);
+	}
+	public function gallery_tambahkan()
+	{
+		cek_session_akses('gallery',$this->session->id_session);
+		if (isset($_POST['submit'])){
+
+					$config['upload_path'] = 'bahan/foto_gallery/';
+					$config['allowed_types'] = 'gif|jpg|png|JPG|JPEG';
+					$this->upload->initialize($config);
+					$this->upload->do_upload('gambar');
+					$hasil22=$this->upload->data();
+					$config['image_library']='gd2';
+					$config['source_image'] = './bahan/foto_gallery/'.$hasil22['file_name'];
+					$config['create_thumb']= FALSE;
+					$config['maintain_ratio']= FALSE;
+					$config['quality']= '80%';
+					$config['new_image']= './bahan/foto_gallery/'.$hasil22['file_name'];
+					$this->load->library('image_lib', $config);
+					$this->image_lib->resize();
+
+					if ($this->input->post('gallery_keyword')!=''){
+								$tag_seo = $this->input->post('gallery_keyword');
+								$tag=implode(',',$tag_seo);
+						}else{
+								$tag = '';
+						}
+					$tag = $this->input->post('gallery_keyword');
+					$tags = explode(",", $tag);
+					$tags2 = array();
+					foreach($tags as $t)
+					{
+						$sql = "select * from keyword where keyword_nama_seo = '" . $this->mylibrary->seo_title($t) . "'";
+						$a = $this->db->query($sql)->result_array();
+						if(count($a) == 0){
+							$data = array('keyword_nama'=>$this->db->escape_str($t),
+									'keyword_username'=>$this->session->username,
+									'keyword_nama_seo'=>$this->mylibrary->seo_title($t),
+									'count'=>'0');
+							$this->Panel_m->insert('keyword',$data);
+						}
+						$tags2[] = $this->mylibrary->seo_title($t);
+					}
+					$tags = implode(",", $tags2);
+					if ($hasil22['file_name']==''){
+									$data = array(
+										'gallery_post_oleh'=>$this->session->username,
+										'gallery_judul'=>$this->db->escape_str($this->input->post('gallery_judul')),
+										'gallery_judul_seo'=>$this->mylibrary->seo_title($this->input->post('gallery_judul')),
+										'gallery_desk'=>$this->input->post('gallery_desk'),
+										'gallery_post_hari'=>hari_ini(date('w')),
+										'gallery_post_tanggal'=>date('Y-m-d'),
+										'gallery_post_jam'=>date('H:i:s'),
+										'gallery_dibaca'=>'0',
+										'gallery_status'=>'publish',
+										'gallery_meta_desk'=>$this->input->post('gallery_meta_desk'),
+										'gallery_keyword'=>$tag);
+											}else{
+												$data = array(
+													'gallery_post_oleh'=>$this->session->username,
+													'gallery_judul'=>$this->db->escape_str($this->input->post('gallery_judul')),
+													'gallery_judul_seo'=>$this->mylibrary->seo_title($this->input->post('gallery_judul')),
+													'gallery_desk'=>$this->input->post('gallery_desk'),
+													'gallery_post_hari'=>hari_ini(date('w')),
+													'gallery_post_tanggal'=>date('Y-m-d'),
+													'gallery_post_jam'=>date('H:i:s'),
+													'gallery_dibaca'=>'0',
+													'gallery_status'=>'publish',
+													'gallery_gambar'=>$hasil22['file_name'],
+													'gallery_meta_desk'=>$this->input->post('gallery_meta_desk'),
+													'gallery_keyword'=>$tag);
+												}
+								$this->Panel_m->insert('gallery',$data);
+								redirect('paneladmin/gallery');
+				}else{
+
+					$data['services']   = '';
+					cek_session_akses ('gallery',$this->session->id_session);
+					$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
+					$this->load->view('backend/gallery/v_tambahkan', $data);
+				}
+	}
+	public function gallery_update()
+	{
+		cek_session_akses('gallery',$this->session->id_session);
+		$id = $this->uri->segment(3);
+		if (isset($_POST['submit'])){
+
+			$config['upload_path'] = 'bahan/foto_gallery/';
+			$config['allowed_types'] = 'gif|jpg|png|JPG|JPEG';
+			$this->upload->initialize($config);
+			$this->upload->do_upload('gambar');
+			$hasil22=$this->upload->data();
+			$config['image_library']='gd2';
+			$config['source_image'] = './bahan/foto_gallery/'.$hasil22['file_name'];
+			$config['create_thumb']= FALSE;
+			$config['maintain_ratio']= FALSE;
+			$config['quality']= '80%';
+			$config['new_image']= './bahan/foto_gallery/'.$hasil22['file_name'];
+			$this->load->library('image_lib', $config);
+			$this->image_lib->resize();
+
+			if ($this->input->post('gallery_keyword')!=''){
+						$tag_seo = $this->input->post('gallery_keyword');
+						$tag=implode(',',$tag_seo);
+				}else{
+						$tag = '';
+				}
+			$tag = $this->input->post('gallery_keyword');
+			$tags = explode(",", $tag);
+			$tags2 = array();
+			foreach($tags as $t)
+			{
+				$sql = "select * from keyword where keyword_nama_seo = '" . $this->mylibrary->seo_title($t) . "'";
+				$a = $this->db->query($sql)->result_array();
+				if(count($a) == 0){
+					$data = array('keyword_nama'=>$this->db->escape_str($t),
+							'keyword_username'=>$this->session->username,
+							'keyword_nama_seo'=>$this->mylibrary->seo_title($t),
+							'count'=>'0');
+					$this->Panel_m->insert('keyword',$data);
+				}
+				$tags2[] = $this->mylibrary->seo_title($t);
+			}
+			$tags = implode(",", $tags2);
+						if ($hasil22['file_name']==''){
+										$data = array(
+											'gallery_post_oleh'=>$this->session->username,
+											'gallery_judul'=>$this->db->escape_str($this->input->post('gallery_judul')),
+											'gallery_judul_seo'=>$this->mylibrary->seo_title($this->input->post('gallery_judul')),
+											'gallery_desk'=>$this->input->post('gallery_desk'),
+											'gallery_post_hari'=>hari_ini(date('w')),
+											'gallery_post_tanggal'=>date('Y-m-d'),
+											'gallery_post_jam'=>date('H:i:s'),
+											'gallery_meta_desk'=>$this->input->post('gallery_meta_desk'),
+											'gallery_keyword'=>$tag);
+											$where = array('gallery_id' => $this->input->post('gallery_id'));
+											$this->db->update('gallery', $data, $where);
+						}else{
+										$data = array(
+											'gallery_post_oleh'=>$this->session->username,
+											'gallery_judul'=>$this->db->escape_str($this->input->post('gallery_judul')),
+											'gallery_judul_seo'=>$this->mylibrary->seo_title($this->input->post('gallery_judul')),
+											'gallery_desk'=>$this->input->post('gallery_desk'),
+											'gallery_post_hari'=>hari_ini(date('w')),
+											'gallery_post_tanggal'=>date('Y-m-d'),
+											'gallery_post_jam'=>date('H:i:s'),
+											'gallery_gambar'=>$hasil22['file_name'],
+											'gallery_meta_desk'=>$this->input->post('gallery_meta_desk'),
+											'gallery_keyword'=>$tag);
+											$where = array('gallery_id' => $this->input->post('gallery_id'));
+											$_image = $this->db->get_where('gallery',$where)->row();
+											$query = $this->db->update('gallery',$data,$where);
+											if($query){
+												unlink("bahan/foto_gallery/".$_image->gallery_gambar);
+											}
+
+						}
+						redirect('paneladmin/gallery');
+		}else{
+			if ($this->session->level=='1'){
+					 $proses = $this->Panel_m->edit('gallery', array('gallery_id' => $id))->row_array();
+			}else{
+					$proses = $this->Panel_m->edit('gallery', array('gallery_id' => $id, 'gallery_post_oleh' => $this->session->username))->row_array();
+			}
+			$data = array('rows' => $proses);
+			cek_session_akses ('gallery',$this->session->id_session);
+			$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
+			$this->load->view('backend/gallery/v_update', $data);
+		}
+	}
+	function gallery_delete_temp()
+	{
+
+			cek_session_akses ('gallery',$this->session->id_session);
+			$data = array('gallery_status'=>'delete');
+			$where = array('gallery_id' => $this->uri->segment(3));
+			$this->db->update('gallery', $data, $where);
+			redirect('paneladmin/gallery');
+	}
+	function gallery_restore()
+	{
+
+			cek_session_akses ('gallery',$this->session->id_session);
+			$data = array('gallery_status'=>'Publish');
+			$where = array('gallery_id' => $this->uri->segment(3));
+			$this->db->update('gallery', $data, $where);
+			redirect('paneladmin/gallery_storage_bin');
+	}
+	public function gallery_delete()
+	{
+			cek_session_akses ('gallery',$this->session->id_session);
+			$id = $this->uri->segment(3);
+			$_id = $this->db->get_where('gallery',['gallery_id' => $id])->row();
+			 $query = $this->db->delete('gallery',['gallery_id'=>$id]);
+			if($query){
+							 unlink("./bahan/foto_gallery/".$_id->gallery_gambar);
+		 }
+		redirect('paneladmin/gallery_storage_bin');
+	}
+	/*	Bagian untuk gallery - Penutup	*/
+
+	/*	Bagian untuk workshop - Pembuka	*/
+	public function workshop()
+	{
+		$data['karyawan_menu_open']   = '';
+
+		cek_session_akses ('workshop',$this->session->id_session);
+				if ($this->session->level=='1'){
+						$data['record'] = $this->Crud_m->view_where_ordering('workshop',array('workshop_status'=>'publish'),'workshop_id','DESC');
+				}else{
+						$data['record'] = $this->Crud_m->view_where_ordering('workshop',array('workshop_post_oleh'=>$this->session->username,'workshop_status'=>'publish'),'workshop_id','DESC');
+				}
+				$this->load->view('backend/workshop/v_daftar', $data);
+	}
+	public function workshop_storage_bin()
+	{
+
+		cek_session_akses ('workshop',$this->session->id_session);
+				if ($this->session->level=='1'){
+						$data['record'] = $this->Crud_m->view_where_ordering('workshop',array('workshop_status'=>'delete'),'workshop_id','DESC');
+				}else{
+						$data['record'] = $this->Crud_m->view_where_ordering('workshop',array('workshop_post_oleh'=>$this->session->username,'workshop_status'=>'delete'),'workshop_id','DESC');
+				}
+
+				$data['identitas_stat']   = '';
+				$this->load->view('backend/workshop/v_daftar_hapus', $data);
+	}
+	public function workshop_tambahkan()
+	{
+		cek_session_akses('workshop',$this->session->id_session);
+		if (isset($_POST['submit'])){
+
+					$config['upload_path'] = 'bahan/foto_workshop/';
+					$config['allowed_types'] = 'gif|jpg|png|JPG|JPEG';
+					$this->upload->initialize($config);
+					$this->upload->do_upload('gambar');
+					$hasil22=$this->upload->data();
+					$config['image_library']='gd2';
+					$config['source_image'] = './bahan/foto_workshop/'.$hasil22['file_name'];
+					$config['create_thumb']= FALSE;
+					$config['maintain_ratio']= FALSE;
+					$config['quality']= '80%';
+					$config['new_image']= './bahan/foto_workshop/'.$hasil22['file_name'];
+					$this->load->library('image_lib', $config);
+					$this->image_lib->resize();
+
+					if ($this->input->post('workshop_keyword')!=''){
+								$tag_seo = $this->input->post('workshop_keyword');
+								$tag=implode(',',$tag_seo);
+						}else{
+								$tag = '';
+						}
+					$tag = $this->input->post('workshop_keyword');
+					$tags = explode(",", $tag);
+					$tags2 = array();
+					foreach($tags as $t)
+					{
+						$sql = "select * from keyword where keyword_nama_seo = '" . $this->mylibrary->seo_title($t) . "'";
+						$a = $this->db->query($sql)->result_array();
+						if(count($a) == 0){
+							$data = array('keyword_nama'=>$this->db->escape_str($t),
+									'keyword_username'=>$this->session->username,
+									'keyword_nama_seo'=>$this->mylibrary->seo_title($t),
+									'count'=>'0');
+							$this->Panel_m->insert('keyword',$data);
+						}
+						$tags2[] = $this->mylibrary->seo_title($t);
+					}
+					$tags = implode(",", $tags2);
+					if ($hasil22['file_name']==''){
+									$data = array(
+										'workshop_post_oleh'=>$this->session->username,
+										'workshop_judul'=>$this->db->escape_str($this->input->post('workshop_judul')),
+										'workshop_judul_seo'=>$this->mylibrary->seo_title($this->input->post('workshop_judul')),
+										'workshop_desk'=>$this->input->post('workshop_desk'),
+										'workshop_post_hari'=>hari_ini(date('w')),
+										'workshop_post_tanggal'=>date('Y-m-d'),
+										'workshop_post_jam'=>date('H:i:s'),
+										'workshop_dibaca'=>'0',
+										'workshop_status'=>'publish',
+										'workshop_meta_desk'=>$this->input->post('workshop_meta_desk'),
+										'workshop_keyword'=>$tag);
+											}else{
+												$data = array(
+													'workshop_post_oleh'=>$this->session->username,
+													'workshop_judul'=>$this->db->escape_str($this->input->post('workshop_judul')),
+													'workshop_judul_seo'=>$this->mylibrary->seo_title($this->input->post('workshop_judul')),
+													'workshop_desk'=>$this->input->post('workshop_desk'),
+													'workshop_post_hari'=>hari_ini(date('w')),
+													'workshop_post_tanggal'=>date('Y-m-d'),
+													'workshop_post_jam'=>date('H:i:s'),
+													'workshop_dibaca'=>'0',
+													'workshop_status'=>'publish',
+													'workshop_gambar'=>$hasil22['file_name'],
+													'workshop_meta_desk'=>$this->input->post('workshop_meta_desk'),
+													'workshop_keyword'=>$tag);
+												}
+								$this->Panel_m->insert('workshop',$data);
+								redirect('paneladmin/workshop');
+				}else{
+
+					$data['services']   = '';
+					cek_session_akses ('workshop',$this->session->id_session);
+					$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
+					$this->load->view('backend/workshop/v_tambahkan', $data);
+				}
+	}
+	public function workshop_update()
+	{
+		cek_session_akses('workshop',$this->session->id_session);
+		$id = $this->uri->segment(3);
+		if (isset($_POST['submit'])){
+
+			$config['upload_path'] = 'bahan/foto_workshop/';
+			$config['allowed_types'] = 'gif|jpg|png|JPG|JPEG';
+			$this->upload->initialize($config);
+			$this->upload->do_upload('gambar');
+			$hasil22=$this->upload->data();
+			$config['image_library']='gd2';
+			$config['source_image'] = './bahan/foto_workshop/'.$hasil22['file_name'];
+			$config['create_thumb']= FALSE;
+			$config['maintain_ratio']= FALSE;
+			$config['quality']= '80%';
+			$config['new_image']= './bahan/foto_workshop/'.$hasil22['file_name'];
+			$this->load->library('image_lib', $config);
+			$this->image_lib->resize();
+
+			if ($this->input->post('workshop_keyword')!=''){
+						$tag_seo = $this->input->post('workshop_keyword');
+						$tag=implode(',',$tag_seo);
+				}else{
+						$tag = '';
+				}
+			$tag = $this->input->post('workshop_keyword');
+			$tags = explode(",", $tag);
+			$tags2 = array();
+			foreach($tags as $t)
+			{
+				$sql = "select * from keyword where keyword_nama_seo = '" . $this->mylibrary->seo_title($t) . "'";
+				$a = $this->db->query($sql)->result_array();
+				if(count($a) == 0){
+					$data = array('keyword_nama'=>$this->db->escape_str($t),
+							'keyword_username'=>$this->session->username,
+							'keyword_nama_seo'=>$this->mylibrary->seo_title($t),
+							'count'=>'0');
+					$this->Panel_m->insert('keyword',$data);
+				}
+				$tags2[] = $this->mylibrary->seo_title($t);
+			}
+			$tags = implode(",", $tags2);
+						if ($hasil22['file_name']==''){
+										$data = array(
+											'workshop_post_oleh'=>$this->session->username,
+											'workshop_judul'=>$this->db->escape_str($this->input->post('workshop_judul')),
+											'workshop_judul_seo'=>$this->mylibrary->seo_title($this->input->post('workshop_judul')),
+											'workshop_desk'=>$this->input->post('workshop_desk'),
+											'workshop_post_hari'=>hari_ini(date('w')),
+											'workshop_post_tanggal'=>date('Y-m-d'),
+											'workshop_post_jam'=>date('H:i:s'),
+											'workshop_meta_desk'=>$this->input->post('workshop_meta_desk'),
+											'workshop_keyword'=>$tag);
+											$where = array('workshop_id' => $this->input->post('workshop_id'));
+											$this->db->update('workshop', $data, $where);
+						}else{
+										$data = array(
+											'workshop_post_oleh'=>$this->session->username,
+											'workshop_judul'=>$this->db->escape_str($this->input->post('workshop_judul')),
+											'workshop_judul_seo'=>$this->mylibrary->seo_title($this->input->post('workshop_judul')),
+											'workshop_desk'=>$this->input->post('workshop_desk'),
+											'workshop_post_hari'=>hari_ini(date('w')),
+											'workshop_post_tanggal'=>date('Y-m-d'),
+											'workshop_post_jam'=>date('H:i:s'),
+											'workshop_gambar'=>$hasil22['file_name'],
+											'workshop_meta_desk'=>$this->input->post('workshop_meta_desk'),
+											'workshop_keyword'=>$tag);
+											$where = array('workshop_id' => $this->input->post('workshop_id'));
+											$_image = $this->db->get_where('workshop',$where)->row();
+											$query = $this->db->update('workshop',$data,$where);
+											if($query){
+												unlink("bahan/foto_workshop/".$_image->workshop_gambar);
+											}
+
+						}
+						redirect('paneladmin/workshop');
+		}else{
+			if ($this->session->level=='1'){
+					 $proses = $this->Panel_m->edit('workshop', array('workshop_id' => $id))->row_array();
+			}else{
+					$proses = $this->Panel_m->edit('workshop', array('workshop_id' => $id, 'workshop_post_oleh' => $this->session->username))->row_array();
+			}
+			$data = array('rows' => $proses);
+			cek_session_akses ('workshop',$this->session->id_session);
+			$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
+			$this->load->view('backend/workshop/v_update', $data);
+		}
+	}
+	function workshop_delete_temp()
+	{
+
+			cek_session_akses ('workshop',$this->session->id_session);
+			$data = array('workshop_status'=>'delete');
+			$where = array('workshop_id' => $this->uri->segment(3));
+			$this->db->update('workshop', $data, $where);
+			redirect('paneladmin/workshop');
+	}
+	function workshop_restore()
+	{
+
+			cek_session_akses ('workshop',$this->session->id_session);
+			$data = array('workshop_status'=>'Publish');
+			$where = array('workshop_id' => $this->uri->segment(3));
+			$this->db->update('workshop', $data, $where);
+			redirect('paneladmin/workshop_storage_bin');
+	}
+	public function workshop_delete()
+	{
+			cek_session_akses ('workshop',$this->session->id_session);
+			$id = $this->uri->segment(3);
+			$_id = $this->db->get_where('workshop',['workshop_id' => $id])->row();
+			 $query = $this->db->delete('workshop',['workshop_id'=>$id]);
+			if($query){
+							 unlink("./bahan/foto_workshop/".$_id->workshop_gambar);
+		 }
+		redirect('paneladmin/workshop_storage_bin');
+	}
+	/*	Bagian untuk workshop - Penutup	*/
+
+	/*	Bagian untuk equipment - Pembuka	*/
+	public function equipment()
+	{
+		$data['karyawan_menu_open']   = '';
+
+		cek_session_akses ('equipment',$this->session->id_session);
+				if ($this->session->level=='1'){
+						$data['record'] = $this->Crud_m->view_where_ordering('equipment',array('equipment_status'=>'publish'),'equipment_id','DESC');
+				}else{
+						$data['record'] = $this->Crud_m->view_where_ordering('equipment',array('equipment_post_oleh'=>$this->session->username,'equipment_status'=>'publish'),'equipment_id','DESC');
+				}
+				$this->load->view('backend/equipment/v_daftar', $data);
+	}
+	public function equipment_storage_bin()
+	{
+
+		cek_session_akses ('equipment',$this->session->id_session);
+				if ($this->session->level=='1'){
+						$data['record'] = $this->Crud_m->view_where_ordering('equipment',array('equipment_status'=>'delete'),'equipment_id','DESC');
+				}else{
+						$data['record'] = $this->Crud_m->view_where_ordering('equipment',array('equipment_post_oleh'=>$this->session->username,'equipment_status'=>'delete'),'equipment_id','DESC');
+				}
+
+				$data['identitas_stat']   = '';
+				$this->load->view('backend/equipment/v_daftar_hapus', $data);
+	}
+	public function equipment_tambahkan()
+	{
+		cek_session_akses('equipment',$this->session->id_session);
+		if (isset($_POST['submit'])){
+
+					$config['upload_path'] = 'bahan/foto_equipment/';
+					$config['allowed_types'] = 'gif|jpg|png|JPG|JPEG';
+					$this->upload->initialize($config);
+					$this->upload->do_upload('gambar');
+					$hasil22=$this->upload->data();
+					$config['image_library']='gd2';
+					$config['source_image'] = './bahan/foto_equipment/'.$hasil22['file_name'];
+					$config['create_thumb']= FALSE;
+					$config['maintain_ratio']= FALSE;
+					$config['quality']= '80%';
+					$config['new_image']= './bahan/foto_equipment/'.$hasil22['file_name'];
+					$this->load->library('image_lib', $config);
+					$this->image_lib->resize();
+
+					if ($this->input->post('equipment_keyword')!=''){
+								$tag_seo = $this->input->post('equipment_keyword');
+								$tag=implode(',',$tag_seo);
+						}else{
+								$tag = '';
+						}
+					$tag = $this->input->post('equipment_keyword');
+					$tags = explode(",", $tag);
+					$tags2 = array();
+					foreach($tags as $t)
+					{
+						$sql = "select * from keyword where keyword_nama_seo = '" . $this->mylibrary->seo_title($t) . "'";
+						$a = $this->db->query($sql)->result_array();
+						if(count($a) == 0){
+							$data = array('keyword_nama'=>$this->db->escape_str($t),
+									'keyword_username'=>$this->session->username,
+									'keyword_nama_seo'=>$this->mylibrary->seo_title($t),
+									'count'=>'0');
+							$this->Panel_m->insert('keyword',$data);
+						}
+						$tags2[] = $this->mylibrary->seo_title($t);
+					}
+					$tags = implode(",", $tags2);
+					if ($hasil22['file_name']==''){
+									$data = array(
+										'equipment_post_oleh'=>$this->session->username,
+										'equipment_judul'=>$this->db->escape_str($this->input->post('equipment_judul')),
+										'equipment_judul_seo'=>$this->mylibrary->seo_title($this->input->post('equipment_judul')),
+										'equipment_desk'=>$this->input->post('equipment_desk'),
+										'equipment_post_hari'=>hari_ini(date('w')),
+										'equipment_post_tanggal'=>date('Y-m-d'),
+										'equipment_post_jam'=>date('H:i:s'),
+										'equipment_dibaca'=>'0',
+										'equipment_status'=>'publish',
+										'equipment_meta_desk'=>$this->input->post('equipment_meta_desk'),
+										'equipment_keyword'=>$tag);
+											}else{
+												$data = array(
+													'equipment_post_oleh'=>$this->session->username,
+													'equipment_judul'=>$this->db->escape_str($this->input->post('equipment_judul')),
+													'equipment_judul_seo'=>$this->mylibrary->seo_title($this->input->post('equipment_judul')),
+													'equipment_desk'=>$this->input->post('equipment_desk'),
+													'equipment_post_hari'=>hari_ini(date('w')),
+													'equipment_post_tanggal'=>date('Y-m-d'),
+													'equipment_post_jam'=>date('H:i:s'),
+													'equipment_dibaca'=>'0',
+													'equipment_status'=>'publish',
+													'equipment_gambar'=>$hasil22['file_name'],
+													'equipment_meta_desk'=>$this->input->post('equipment_meta_desk'),
+													'equipment_keyword'=>$tag);
+												}
+								$this->Panel_m->insert('equipment',$data);
+								redirect('paneladmin/equipment');
+				}else{
+
+					$data['services']   = '';
+					cek_session_akses ('equipment',$this->session->id_session);
+					$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
+					$this->load->view('backend/equipment/v_tambahkan', $data);
+				}
+	}
+	public function equipment_update()
+	{
+		cek_session_akses('equipment',$this->session->id_session);
+		$id = $this->uri->segment(3);
+		if (isset($_POST['submit'])){
+
+			$config['upload_path'] = 'bahan/foto_equipment/';
+			$config['allowed_types'] = 'gif|jpg|png|JPG|JPEG';
+			$this->upload->initialize($config);
+			$this->upload->do_upload('gambar');
+			$hasil22=$this->upload->data();
+			$config['image_library']='gd2';
+			$config['source_image'] = './bahan/foto_equipment/'.$hasil22['file_name'];
+			$config['create_thumb']= FALSE;
+			$config['maintain_ratio']= FALSE;
+			$config['quality']= '80%';
+			$config['new_image']= './bahan/foto_equipment/'.$hasil22['file_name'];
+			$this->load->library('image_lib', $config);
+			$this->image_lib->resize();
+
+			if ($this->input->post('equipment_keyword')!=''){
+						$tag_seo = $this->input->post('equipment_keyword');
+						$tag=implode(',',$tag_seo);
+				}else{
+						$tag = '';
+				}
+			$tag = $this->input->post('equipment_keyword');
+			$tags = explode(",", $tag);
+			$tags2 = array();
+			foreach($tags as $t)
+			{
+				$sql = "select * from keyword where keyword_nama_seo = '" . $this->mylibrary->seo_title($t) . "'";
+				$a = $this->db->query($sql)->result_array();
+				if(count($a) == 0){
+					$data = array('keyword_nama'=>$this->db->escape_str($t),
+							'keyword_username'=>$this->session->username,
+							'keyword_nama_seo'=>$this->mylibrary->seo_title($t),
+							'count'=>'0');
+					$this->Panel_m->insert('keyword',$data);
+				}
+				$tags2[] = $this->mylibrary->seo_title($t);
+			}
+			$tags = implode(",", $tags2);
+						if ($hasil22['file_name']==''){
+										$data = array(
+											'equipment_post_oleh'=>$this->session->username,
+											'equipment_judul'=>$this->db->escape_str($this->input->post('equipment_judul')),
+											'equipment_judul_seo'=>$this->mylibrary->seo_title($this->input->post('equipment_judul')),
+											'equipment_desk'=>$this->input->post('equipment_desk'),
+											'equipment_post_hari'=>hari_ini(date('w')),
+											'equipment_post_tanggal'=>date('Y-m-d'),
+											'equipment_post_jam'=>date('H:i:s'),
+											'equipment_meta_desk'=>$this->input->post('equipment_meta_desk'),
+											'equipment_keyword'=>$tag);
+											$where = array('equipment_id' => $this->input->post('equipment_id'));
+											$this->db->update('equipment', $data, $where);
+						}else{
+										$data = array(
+											'equipment_post_oleh'=>$this->session->username,
+											'equipment_judul'=>$this->db->escape_str($this->input->post('equipment_judul')),
+											'equipment_judul_seo'=>$this->mylibrary->seo_title($this->input->post('equipment_judul')),
+											'equipment_desk'=>$this->input->post('equipment_desk'),
+											'equipment_post_hari'=>hari_ini(date('w')),
+											'equipment_post_tanggal'=>date('Y-m-d'),
+											'equipment_post_jam'=>date('H:i:s'),
+											'equipment_gambar'=>$hasil22['file_name'],
+											'equipment_meta_desk'=>$this->input->post('equipment_meta_desk'),
+											'equipment_keyword'=>$tag);
+											$where = array('equipment_id' => $this->input->post('equipment_id'));
+											$_image = $this->db->get_where('equipment',$where)->row();
+											$query = $this->db->update('equipment',$data,$where);
+											if($query){
+												unlink("bahan/foto_equipment/".$_image->equipment_gambar);
+											}
+
+						}
+						redirect('paneladmin/equipment');
+		}else{
+			if ($this->session->level=='1'){
+					 $proses = $this->Panel_m->edit('equipment', array('equipment_id' => $id))->row_array();
+			}else{
+					$proses = $this->Panel_m->edit('equipment', array('equipment_id' => $id, 'equipment_post_oleh' => $this->session->username))->row_array();
+			}
+			$data = array('rows' => $proses);
+			cek_session_akses ('equipment',$this->session->id_session);
+			$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
+			$this->load->view('backend/equipment/v_update', $data);
+		}
+	}
+	function equipment_delete_temp()
+	{
+
+			cek_session_akses ('equipment',$this->session->id_session);
+			$data = array('equipment_status'=>'delete');
+			$where = array('equipment_id' => $this->uri->segment(3));
+			$this->db->update('equipment', $data, $where);
+			redirect('paneladmin/equipment');
+	}
+	function equipment_restore()
+	{
+
+			cek_session_akses ('equipment',$this->session->id_session);
+			$data = array('equipment_status'=>'Publish');
+			$where = array('equipment_id' => $this->uri->segment(3));
+			$this->db->update('equipment', $data, $where);
+			redirect('paneladmin/equipment_storage_bin');
+	}
+	public function equipment_delete()
+	{
+			cek_session_akses ('equipment',$this->session->id_session);
+			$id = $this->uri->segment(3);
+			$_id = $this->db->get_where('equipment',['equipment_id' => $id])->row();
+			 $query = $this->db->delete('equipment',['equipment_id'=>$id]);
+			if($query){
+							 unlink("./bahan/foto_equipment/".$_id->equipment_gambar);
+		 }
+		redirect('paneladmin/equipment_storage_bin');
+	}
+	/*	Bagian untuk equipment - Penutup	*/
 
 	/*	Bagian untuk Testimonial - Pembuka	*/
 	public function testimonial()
