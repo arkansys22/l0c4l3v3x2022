@@ -837,8 +837,7 @@ class Paneladmin extends CI_Controller {
 	{
 		$data['karyawan_menu_open']   = '';
 
-		cek_session_akses ('gallery',$this->session->id_session);
-				if ($this->session->level=='1'){
+				if ($this->session->level=='1' OR $this->session->level=='2'){
 						$data['record'] = $this->Crud_m->view_where_ordering('gallery',array('gallery_status'=>'publish'),'gallery_id','DESC');
 				}else{
 						$data['record'] = $this->Crud_m->view_where_ordering('gallery',array('gallery_post_oleh'=>$this->session->username,'gallery_status'=>'publish'),'gallery_id','DESC');
@@ -848,8 +847,8 @@ class Paneladmin extends CI_Controller {
 	public function gallery_storage_bin()
 	{
 
-		cek_session_akses ('gallery',$this->session->id_session);
-				if ($this->session->level=='1'){
+
+				if ($this->session->level=='1' OR $this->session->level=='2'){
 						$data['record'] = $this->Crud_m->view_where_ordering('gallery',array('gallery_status'=>'delete'),'gallery_id','DESC');
 				}else{
 						$data['record'] = $this->Crud_m->view_where_ordering('gallery',array('gallery_post_oleh'=>$this->session->username,'gallery_status'=>'delete'),'gallery_id','DESC');
@@ -860,7 +859,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function gallery_tambahkan()
 	{
-		cek_session_akses('gallery',$this->session->id_session);
+
 		if (isset($_POST['submit'])){
 
 					$config['upload_path'] = 'bahan/foto_gallery/';
@@ -933,14 +932,14 @@ class Paneladmin extends CI_Controller {
 				}else{
 
 					$data['services']   = '';
-					cek_session_akses ('gallery',$this->session->id_session);
+
 					$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
 					$this->load->view('backend/gallery/v_tambahkan', $data);
 				}
 	}
 	public function gallery_update()
 	{
-		cek_session_akses('gallery',$this->session->id_session);
+
 		$id = $this->uri->segment(3);
 		if (isset($_POST['submit'])){
 
@@ -1016,21 +1015,19 @@ class Paneladmin extends CI_Controller {
 						}
 						redirect('paneladmin/gallery');
 		}else{
-			if ($this->session->level=='1'){
+			if ($this->session->level=='1' OR $this->session->level=='2'){
 					 $proses = $this->Panel_m->edit('gallery', array('gallery_id' => $id))->row_array();
 			}else{
 					$proses = $this->Panel_m->edit('gallery', array('gallery_id' => $id, 'gallery_post_oleh' => $this->session->username))->row_array();
 			}
 			$data = array('rows' => $proses);
-			cek_session_akses ('gallery',$this->session->id_session);
+
 			$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
 			$this->load->view('backend/gallery/v_update', $data);
 		}
 	}
 	function gallery_delete_temp()
 	{
-
-			cek_session_akses ('gallery',$this->session->id_session);
 			$data = array('gallery_status'=>'delete');
 			$where = array('gallery_id' => $this->uri->segment(3));
 			$this->db->update('gallery', $data, $where);
@@ -1038,8 +1035,6 @@ class Paneladmin extends CI_Controller {
 	}
 	function gallery_restore()
 	{
-
-			cek_session_akses ('gallery',$this->session->id_session);
 			$data = array('gallery_status'=>'Publish');
 			$where = array('gallery_id' => $this->uri->segment(3));
 			$this->db->update('gallery', $data, $where);
@@ -1063,8 +1058,8 @@ class Paneladmin extends CI_Controller {
 	{
 		$data['karyawan_menu_open']   = '';
 
-		cek_session_akses ('workshop',$this->session->id_session);
-				if ($this->session->level=='1'){
+
+				if ($this->session->level=='1' OR $this->session->level=='2'){
 						$data['record'] = $this->Crud_m->view_where_ordering('workshop',array('workshop_status'=>'publish'),'workshop_id','DESC');
 				}else{
 						$data['record'] = $this->Crud_m->view_where_ordering('workshop',array('workshop_post_oleh'=>$this->session->username,'workshop_status'=>'publish'),'workshop_id','DESC');
@@ -1074,8 +1069,7 @@ class Paneladmin extends CI_Controller {
 	public function workshop_storage_bin()
 	{
 
-		cek_session_akses ('workshop',$this->session->id_session);
-				if ($this->session->level=='1'){
+				if ($this->session->level=='1' OR $this->session->level=='2'){
 						$data['record'] = $this->Crud_m->view_where_ordering('workshop',array('workshop_status'=>'delete'),'workshop_id','DESC');
 				}else{
 						$data['record'] = $this->Crud_m->view_where_ordering('workshop',array('workshop_post_oleh'=>$this->session->username,'workshop_status'=>'delete'),'workshop_id','DESC');
@@ -1086,7 +1080,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function workshop_tambahkan()
 	{
-		cek_session_akses('workshop',$this->session->id_session);
+
 		if (isset($_POST['submit'])){
 
 					$config['upload_path'] = 'bahan/foto_workshop/';
@@ -1159,14 +1153,13 @@ class Paneladmin extends CI_Controller {
 				}else{
 
 					$data['services']   = '';
-					cek_session_akses ('workshop',$this->session->id_session);
 					$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
 					$this->load->view('backend/workshop/v_tambahkan', $data);
 				}
 	}
 	public function workshop_update()
 	{
-		cek_session_akses('workshop',$this->session->id_session);
+
 		$id = $this->uri->segment(3);
 		if (isset($_POST['submit'])){
 
@@ -1242,13 +1235,12 @@ class Paneladmin extends CI_Controller {
 						}
 						redirect('paneladmin/workshop');
 		}else{
-			if ($this->session->level=='1'){
+			if ($this->session->level=='1' OR $this->session->level=='2'){
 					 $proses = $this->Panel_m->edit('workshop', array('workshop_id' => $id))->row_array();
 			}else{
 					$proses = $this->Panel_m->edit('workshop', array('workshop_id' => $id, 'workshop_post_oleh' => $this->session->username))->row_array();
 			}
 			$data = array('rows' => $proses);
-			cek_session_akses ('workshop',$this->session->id_session);
 			$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
 			$this->load->view('backend/workshop/v_update', $data);
 		}
@@ -1256,7 +1248,6 @@ class Paneladmin extends CI_Controller {
 	function workshop_delete_temp()
 	{
 
-			cek_session_akses ('workshop',$this->session->id_session);
 			$data = array('workshop_status'=>'delete');
 			$where = array('workshop_id' => $this->uri->segment(3));
 			$this->db->update('workshop', $data, $where);
@@ -1264,8 +1255,6 @@ class Paneladmin extends CI_Controller {
 	}
 	function workshop_restore()
 	{
-
-			cek_session_akses ('workshop',$this->session->id_session);
 			$data = array('workshop_status'=>'Publish');
 			$where = array('workshop_id' => $this->uri->segment(3));
 			$this->db->update('workshop', $data, $where);
@@ -1289,8 +1278,8 @@ class Paneladmin extends CI_Controller {
 	{
 		$data['karyawan_menu_open']   = '';
 
-		cek_session_akses ('equipment',$this->session->id_session);
-				if ($this->session->level=='1'){
+
+				if ($this->session->level=='1' OR $this->session->level=='2'){
 						$data['record'] = $this->Crud_m->view_where_ordering('equipment',array('equipment_status'=>'publish'),'equipment_id','DESC');
 				}else{
 						$data['record'] = $this->Crud_m->view_where_ordering('equipment',array('equipment_post_oleh'=>$this->session->username,'equipment_status'=>'publish'),'equipment_id','DESC');
@@ -1300,8 +1289,8 @@ class Paneladmin extends CI_Controller {
 	public function equipment_storage_bin()
 	{
 
-		cek_session_akses ('equipment',$this->session->id_session);
-				if ($this->session->level=='1'){
+
+				if ($this->session->level=='1' OR $this->session->level=='2'){
 						$data['record'] = $this->Crud_m->view_where_ordering('equipment',array('equipment_status'=>'delete'),'equipment_id','DESC');
 				}else{
 						$data['record'] = $this->Crud_m->view_where_ordering('equipment',array('equipment_post_oleh'=>$this->session->username,'equipment_status'=>'delete'),'equipment_id','DESC');
@@ -1312,7 +1301,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function equipment_tambahkan()
 	{
-		cek_session_akses('equipment',$this->session->id_session);
+
 		if (isset($_POST['submit'])){
 
 					$config['upload_path'] = 'bahan/foto_equipment/';
@@ -1385,14 +1374,14 @@ class Paneladmin extends CI_Controller {
 				}else{
 
 					$data['services']   = '';
-					cek_session_akses ('equipment',$this->session->id_session);
+
 					$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
 					$this->load->view('backend/equipment/v_tambahkan', $data);
 				}
 	}
 	public function equipment_update()
 	{
-		cek_session_akses('equipment',$this->session->id_session);
+
 		$id = $this->uri->segment(3);
 		if (isset($_POST['submit'])){
 
@@ -1468,13 +1457,12 @@ class Paneladmin extends CI_Controller {
 						}
 						redirect('paneladmin/equipment');
 		}else{
-			if ($this->session->level=='1'){
+			if ($this->session->level=='1' OR $this->session->level=='2'){
 					 $proses = $this->Panel_m->edit('equipment', array('equipment_id' => $id))->row_array();
 			}else{
 					$proses = $this->Panel_m->edit('equipment', array('equipment_id' => $id, 'equipment_post_oleh' => $this->session->username))->row_array();
 			}
 			$data = array('rows' => $proses);
-			cek_session_akses ('equipment',$this->session->id_session);
 			$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
 			$this->load->view('backend/equipment/v_update', $data);
 		}
@@ -1482,7 +1470,7 @@ class Paneladmin extends CI_Controller {
 	function equipment_delete_temp()
 	{
 
-			cek_session_akses ('equipment',$this->session->id_session);
+
 			$data = array('equipment_status'=>'delete');
 			$where = array('equipment_id' => $this->uri->segment(3));
 			$this->db->update('equipment', $data, $where);
@@ -1491,7 +1479,7 @@ class Paneladmin extends CI_Controller {
 	function equipment_restore()
 	{
 
-			cek_session_akses ('equipment',$this->session->id_session);
+
 			$data = array('equipment_status'=>'Publish');
 			$where = array('equipment_id' => $this->uri->segment(3));
 			$this->db->update('equipment', $data, $where);

@@ -2,7 +2,7 @@
 function cek_session_akses($id){
   $ci = & get_instance();
   $session = $ci->db->query("SELECT * FROM user WHERE user.id_session='$id'")->num_rows();
-  if ($session == '0' AND $ci->session->userdata('level') != '1'){
+  if ($session == '0' AND $ci->session->userdata('level') != '1' ){
     redirect(base_url().'paneladmin/home');
   }
 }
