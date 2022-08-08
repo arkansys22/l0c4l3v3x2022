@@ -28,10 +28,10 @@
                     <a href="<?php echo base_url()?>">Portfolio </a>
                     <!--second level -->
                     <ul>
-                        <li><a href="#">Gallery</a></li>
+                        <li><a href="<?php echo base_url()?>gallery">Gallery</a></li>
                         <li><a href="<?php echo base_url()?>portfolio/booth-design">Desain</a></li>
-                        <li><a href="#">Equipment</a></li>
-                        <li><a href="#">Workshop</a></li>
+                        <li><a href="<?php echo base_url()?>equipment">Equipment</a></li>
+                        <li><a href="<?php echo base_url()?>workshop">Workshop</a></li>
                     </ul>
                     <!--second level end-->
                 </li>
