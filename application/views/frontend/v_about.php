@@ -65,8 +65,6 @@
                     <nav class="scroll-nav scroll-init">
                         <ul>
                             <li><a class="act-scrlink" href="#sec1">About</a></li>
-                            <li><a href="#sec2">Skills</a></li>
-                            <li><a href="#sec3">Services</a></li>
                             <li><a href="#sec4">Clients</a></li>
                         </ul>
                     </nav>
@@ -105,104 +103,7 @@
                 </section>
                 <!--section end  -->
                 <div class="sec-dec"></div>
-                <!--section   -->
-                <section id="sec2">
-                    <div class="container small-container">
-                        <div class="section-title fl-wrap">
-                            <h3>Skills and Attainments</h3>
-                            <h4>Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa</h4>
-                            <div class="section-number">02.</div>
-                        </div>
-                        <div class="column-wrapper_item fl-wrap">
-                            <div class="column-wrapper_text fl-wrap">
-                                <div class="skillbar-box animaper">
-                                    <!-- skill 1-->
-                                    <div class="custom-skillbar-title"><span>Photoshop</span></div>
-                                    <div class="skill-bar-percent">95%</div>
-                                    <div class="skillbar-bg" data-percent="95%">
-                                        <div class="custom-skillbar"></div>
-                                    </div>
-                                    <!-- skill 2-->
-                                    <div class="custom-skillbar-title"><span>Illustrator</span></div>
-                                    <div class="skill-bar-percent">65%</div>
-                                    <div class="skillbar-bg" data-percent="65%">
-                                        <div class="custom-skillbar"></div>
-                                    </div>
-                                    <!-- skill 3-->
-                                    <div class="custom-skillbar-title"><span>3D MAX</span></div>
-                                    <div class="skill-bar-percent">75%</div>
-                                    <div class="skillbar-bg" data-percent="75%">
-                                        <div class="custom-skillbar"></div>
-                                    </div>
-                                    <!-- skill 4-->
-                                    <div class="custom-skillbar-title"><span>Google ScketchUp</span></div>
-                                    <div class="skill-bar-percent">90%</div>
-                                    <div class="skillbar-bg" data-percent="90%">
-                                        <div class="custom-skillbar"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--section end  -->
-                <div class="sec-dec"></div>
-                <!--section   -->
-                <section id="sec3">
-                    <div class="container small-container">
-                        <div class="section-title fl-wrap">
-                            <h3>Services and prices</h3>
-                            <h4>Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa</h4>
-                            <div class="section-number">03.</div>
-                        </div>
-                        <div class="column-wrapper_item fl-wrap">
-                            <div class="column-wrapper_text fl-wrap">
-                                <!-- serv-wrap-->
-                                <div class="serv-wrap fl-wrap">
-                                    <!-- serv-item -->
-                                    <div class="serv-item">
-                                        <div class="serv-media">
-                                            <img src="<?php echo base_url()?>bahan/frontend/images/services/1.jpg" alt="">
-                                        </div>
-                                        <div class="serv-text">
-                                            <h4><a href="#">Wedding Photography</a></h4>
-                                            <p> Sed blandit, dolor id aliquam vestibulum, nibh elit imperdiet turpis, quis molestie quam erat vel nisi.</p>
-                                            <ul>
-                                                <li><a href="#">Portraits</a></li>
-                                                <li><a href="#">Weddings</a></li>
-                                                <li><a href="#">Commercials</a></li>
-                                            </ul>
-                                            <div class="serv-price">Price :<span> $250-$1200</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- serv-item end -->
-                                    <!-- serv-item -->
-                                    <div class="serv-item">
-                                        <div class="serv-media">
-                                            <img src="<?php echo base_url()?>bahan/frontend/images/services/2.jpg" alt="">
-                                        </div>
-                                        <div class="serv-text">
-                                            <h4><a href="#">Commercial Photography</a></h4>
-                                            <p> Sed blandit, dolor id aliquam vestibulum, nibh elit imperdiet turpis, quis molestie quam erat vel nisi.</p>
-                                            <ul>
-                                                <li><a href="#">Filming</a></li>
-                                                <li><a href="#">Montage</a></li>
-                                                <li><a href="#">Slow motion</a></li>
-                                            </ul>
-                                            <div class="serv-price">Price :<span> $350-$900</span></div>
-                                        </div>
-                                    </div>
-                                    <!-- serv-item end -->
-                                </div>
-                                <!-- serv-wrap end -->
-                                <p>Praesent nec leo venenatis elit semper aliquet id ac enim. Maecenas nec mi leo. Etiam venenatis ut dui non hendrerit. Integer dictum, diam vitae blandit accumsan, dolor odio tempus arcu, vel ultrices nisi nibh vitae ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius lacinia vestibulum. Aliquam lobortis facilisis tellus, in facilisis ex vehicula ac. In malesuada quis turpis vel viverra.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--section end  -->
-                <div class="sec-dec"></div>
-                <!--section -->
+            
                 <section id="sec4">
                     <div class="container small-container">
                         <div class="section-title fl-wrap">
