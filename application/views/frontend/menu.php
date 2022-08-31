@@ -8,7 +8,7 @@
     <div class="search-input"><input name="se" id="se" type="text" class="search" placeholder="Search.." /></div>
     search end  -->
     <div class="sb-button"></div>
-    <div class="share-btn showshare"><i class="fal fa-megaphone"></i><span>Share</span></div>
+
     <!-- mobile nav -->
     <div class="nav-button-wrap">
         <div class="nav-button"><span></span><span></span><span></span></div>
@@ -35,9 +35,7 @@
                     </ul>
                     <!--second level end-->
                 </li>
-                <li>
-                    <a href="<?php echo base_url()?>">Contacts</a>
-                </li>
+
             </ul>
         </nav>
     </div>

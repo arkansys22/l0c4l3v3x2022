@@ -47,10 +47,7 @@
             <div class="column-image">
                 <div class="bg" data-bg="<?php echo base_url()?>bahan/frontend/images/bg/19.jpg"></div>
                 <div class="overlay"></div>
-                <div class="column-title">
-                    <h2>About Me</h2>
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</h3>
-                </div>
+
                 <div class="column-notifer">
                     <div class="scroll-down-wrap transparent_sdw">
                         <div class="mousey">
@@ -78,8 +75,7 @@
                 <section id="sec1">
                     <div class="container small-container">
                         <div class="section-title fl-wrap">
-                            <h3>My Little Story</h3>
-                            <h4>Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa</h4>
+                            <h3>About Us</h3>
                             <div class="section-number">01.</div>
                         </div>
                         <div class="column-wrapper_item fl-wrap">
@@ -89,48 +85,20 @@
                                 </p>
                                 <p>Praesent nec leo venenatis elit semper aliquet id ac enim. Maecenas nec mi leo. Etiam venenatis ut dui non hendrerit. Integer dictum, diam vitae blandit accumsan, dolor odio tempus arcu, vel ultrices nisi nibh vitae ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius lacinia vestibulum. Aliquam lobortis facilisis tellus, in facilisis ex vehicula ac. In malesuada quis turpis vel viverra.</p>
                                 <div class="inline-facts-holder fl-wrap">
-                                    <!-- inline-facts -->
+                                  <?php $kategori_produk = $this->Crud_m->view_where_orderings('products_category',array('products_cat_status'=>'publish'),'products_cat_id','ASC'); ?>
+                                    <?php foreach ($kategori_produk as $post) {  ?>
                                     <div class="inline-facts">
                                         <div class="milestone-counter">
                                             <div class="stats animaper">
-                                                <div class="num" data-content="461" data-num="461">461</div>
+                                              <?php $produks = $this->Panel_m->view_where('products',array('products_status'=>'publish','products_cat_id'=>$post->products_cat_id))->num_rows(); ?>
+                                                <div class="num" data-content="<?php echo $produks; ?>" data-num="<?php echo $produks; ?>"><?php echo $produks; ?></div>
                                             </div>
                                         </div>
-                                        <h6>Finished projects</h6>
+                                        <h6><?php echo $post->products_cat_judul?></h6>
                                     </div>
-                                    <!-- inline-facts end -->
-                                    <!-- inline-facts  -->
-                                    <div class="inline-facts">
-                                        <div class="milestone-counter">
-                                            <div class="stats animaper">
-                                                <div class="num" data-content="461" data-num="461">461</div>
-                                            </div>
-                                        </div>
-                                        <h6>Finished projects</h6>
-                                    </div>
-                                    <!-- inline-facts end -->
-                                    <!-- inline-facts  -->
-                                    <div class="inline-facts">
-                                        <div class="milestone-counter">
-                                            <div class="stats animaper">
-                                                <div class="num" data-content="168" data-num="168">168</div>
-                                            </div>
-                                        </div>
-                                        <h6>Happy customers</h6>
-                                    </div>
-                                    <!-- inline-facts end -->
-                                    <!-- inline-facts  -->
-                                    <div class="inline-facts">
-                                        <div class="milestone-counter">
-                                            <div class="stats animaper">
-                                                <div class="num" data-content="222" data-num="222">222</div>
-                                            </div>
-                                        </div>
-                                        <h6>Working hours </h6>
-                                    </div>
-                                    <!-- inline-facts end -->
+                                  <?php } ?>
                                 </div>
-                                <a href="portfolio.html" class="btn fl-btn">My Portfolio</a>
+                                <a href="<?php echo base_url() ?>portfolio/hybrid-event" class="btn fl-btn">My Portfolio</a>
                             </div>
                         </div>
                     </div>
