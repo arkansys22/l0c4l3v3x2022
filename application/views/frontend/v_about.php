@@ -65,7 +65,6 @@
                     <nav class="scroll-nav scroll-init">
                         <ul>
                             <li><a class="act-scrlink" href="#sec1">About</a></li>
-                            <li><a href="#sec4">Clients</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -103,70 +102,7 @@
                 </section>
                 <!--section end  -->
                 <div class="sec-dec"></div>
-            
-                <section id="sec4">
-                    <div class="container small-container">
-                        <div class="section-title fl-wrap">
-                            <h3>Clients and Testimonilas</h3>
-                            <h4>Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa</h4>
-                            <div class="section-number">04.</div>
-                        </div>
-                        <div class="column-wrapper_item fl-wrap">
-                            <div class="column-wrapper_text fl-wrap">
-                                <div class="testilider fl-wrap" data-effects="slide">
-                                    <div class="swiper-container">
-                                        <div class="swiper-wrapper">
-                                            <!-- swiper-slide -->
-                                            <div class="swiper-slide">
-                                                <div class="testi-item fl-wrap">
-                                                    <div class="testi-avatar"><img src="<?php echo base_url()?>bahan/frontend/images/avatar/1.jpg" alt=""></div>
-                                                    <h3>Liza Mirovsky</h3>
-                                                    <p>"All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over "</p>
-                                                    <a href="#" class="teti-link" target="_blank">Via Twitter</a>
-                                                </div>
-                                            </div>
-                                            <!-- swiper-slide end-->
-                                            <!-- swiper-slide -->
-                                            <div class="swiper-slide">
-                                                <div class="testi-item fl-wrap">
-                                                    <div class="testi-avatar"><img src="<?php echo base_url()?>bahan/frontend/images/avatar/2.jpg" alt=""></div>
-                                                    <h3>Andy Smith</h3>
-                                                    <p>"Vestibulum orci felis, ullamcorper non condimentum non, ultrices ac nunc. Mauris non ligula suscipit, vulputate mi accumsan, dapibus felis. Nullam sed sapien dui. Nulla auctor sit amet sem non porta. "</p>
-                                                    <a href="#" class="teti-link" target="_blank">Via Facebook</a>
-                                                </div>
-                                            </div>
-                                            <!-- swiper-slide end-->
-                                            <!-- swiper-slide -->
-                                            <div class="swiper-slide">
-                                                <div class="testi-item fl-wrap">
-                                                    <div class="testi-avatar"><img src="<?php echo base_url()?>bahan/frontend/images/avatar/3.jpg" alt=""></div>
-                                                    <h3>Gary Trust</h3>
-                                                    <p>"All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over "</p>
-                                                    <a href="#" class="teti-link" target="_blank">Via Myspace</a>
-                                                </div>
-                                            </div>
-                                            <!-- swiper-slide end-->
-                                            <!-- swiper-slide -->
-                                            <div class="swiper-slide">
-                                                <div class="testi-item fl-wrap">
-                                                    <div class="testi-avatar"><img src="<?php echo base_url()?>bahan/frontend/images/avatar/4.jpg" alt=""></div>
-                                                    <h3>Centa Simpson</h3>
-                                                    <p>"Vestibulum orci felis, ullamcorper non condimentum non, ultrices ac nunc. Mauris non ligula suscipit, vulputate mi accumsan, dapibus felis. Nullam sed sapien dui. Nulla auctor sit amet sem non porta. "</p>
-                                                    <a href="#" class="teti-link" target="_blank">Via Facebook</a>
-                                                </div>
-                                            </div>
-                                            <!-- swiper-slide end-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testilider-controls">
-                                <div class="ss-slider-btn ss-slider-prev color-bg"><i class="fal fa-angle-left"></i></div>
-                                <div class="ss-slider-btn ss-slider-next color-bg"><i class="fal fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
                 <!--section end  -->
                 <!--footer -->
                 <footer class="min-footer fl-wrap content-animvisible">
@@ -174,7 +110,7 @@
                         <div class="footer-inner fl-wrap">
                             <!-- policy-box-->
                             <div class="policy-box">
-                                <span>&#169; Kotlis 2019  /  All rights reserved. </span>
+                                <span>&#169; Localevex 2022  /  All rights reserved. </span>
                             </div>
                             <!-- policy-box end-->
                             <a href="#" class="to-top-btn to-top">Back to top <i class="fal fa-long-arrow-up"></i></a>
