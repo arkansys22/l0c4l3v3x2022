@@ -61,7 +61,7 @@
                                ?>
                                 <div class="thumb-info">
                                     <h3><a href="<?php echo base_url() ?>portfolio/<?php echo $post->products_cat_judul_seo?>"><?php echo $post->products_cat_judul?></a></h3>
-                                    <p><?php echo $post->products_cat_desk?></p>
+                                    
                                 </div>
                             </div>
                             <!-- swiper-slide end-->
