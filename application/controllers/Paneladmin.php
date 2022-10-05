@@ -3494,7 +3494,7 @@ class Paneladmin extends CI_Controller {
 													'products_cat_post_jam'=>date('H:i:s'),
 													'products_cat_dibaca'=>'0',
 													'products_cat_status'=>'publish',
-													'products_catgambar'=>$hasil22['file_name'],
+													'products_cat_gambar'=>$hasil22['file_name'],
 													'products_cat_meta_desk'=>$this->input->post('products_cat_meta_desk'),
 													'products_cat_keyword'=>$tag);
 												}
