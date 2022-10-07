@@ -1042,7 +1042,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function gallery_delete()
 	{
-			cek_session_akses ('gallery',$this->session->id_session);
+
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('gallery',['gallery_id' => $id])->row();
 			 $query = $this->db->delete('gallery',['gallery_id'=>$id]);
@@ -1262,7 +1262,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function workshop_delete()
 	{
-			cek_session_akses ('workshop',$this->session->id_session);
+		
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('workshop',['workshop_id' => $id])->row();
 			 $query = $this->db->delete('workshop',['workshop_id'=>$id]);
@@ -1487,7 +1487,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function equipment_delete()
 	{
-		
+
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('equipment',['equipment_id' => $id])->row();
 			 $query = $this->db->delete('equipment',['equipment_id'=>$id]);
