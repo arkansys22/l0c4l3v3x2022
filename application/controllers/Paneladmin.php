@@ -1487,7 +1487,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function equipment_delete()
 	{
-			cek_session_akses ('equipment',$this->session->id_session);
+		
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('equipment',['equipment_id' => $id])->row();
 			 $query = $this->db->delete('equipment',['equipment_id'=>$id]);
