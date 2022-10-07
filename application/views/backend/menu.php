@@ -137,16 +137,6 @@
         <?php } ?>
       </li>
 
-
-      <li class="nav-item">
-        <a href="<?php echo base_url(); ?>paneladmin/pengumuman" class="nav-link " >
-          <i class="nav-icon fas fa-bullhorn"></i>
-          <p>
-            Pengumuman
-          </p>
-        </a>
-      </li>
-
       <?php  if($this->session->level=='1' OR $this->session->level=='2'){ ?>
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -173,12 +163,7 @@
                 <p>Portfolio</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>paneladmin/services" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Layanan</p>
-              </a>
-            </li>
+        
 
           </ul>
         </li>
