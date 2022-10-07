@@ -24,10 +24,10 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
+      <!--
         <div class="row">
         <?php  if($this->session->level=='1'){ ?>
           <div class="col-lg-3 col-6">
-            <!-- small box -->
             <div class="small-box bg-info">
               <?php $jmlproducts1 = $this->Panel_m->view('user')->num_rows(); ?>
               <div class="inner">
@@ -40,9 +40,8 @@
             <a href="<?php echo base_url('paneladmin/data_karyawan') ?>" class="small-box-footer">Info Lengkap <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <?php } ?>      
+          <?php } ?>
             <div class="col-lg-3 col-6">
-            <!-- small box -->
             <div class="small-box bg-warning">
               <?php $jmlproducts1 = $this->Panel_m->view_where('pengumuman',array('pengumuman_stat'=>'publish'))->num_rows(); ?>
               <div class="inner">
@@ -57,7 +56,7 @@
 
           </div>
         </div>
-        <!-- /.row -->
+        -->
         <!-- Main row -->
         <div class="row">
 
