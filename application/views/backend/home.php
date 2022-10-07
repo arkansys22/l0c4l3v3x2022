@@ -24,39 +24,7 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-      <!--
-        <div class="row">
-        <?php  if($this->session->level=='1'){ ?>
-          <div class="col-lg-3 col-6">
-            <div class="small-box bg-info">
-              <?php $jmlproducts1 = $this->Panel_m->view('user')->num_rows(); ?>
-              <div class="inner">
-                <h3><?php echo $jmlproducts1; ?></h3>
-                <p>Total Karyawan</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-stalker"></i>
-              </div>
-            <a href="<?php echo base_url('paneladmin/data_karyawan') ?>" class="small-box-footer">Info Lengkap <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <?php } ?>
-            <div class="col-lg-3 col-6">
-            <div class="small-box bg-warning">
-              <?php $jmlproducts1 = $this->Panel_m->view_where('pengumuman',array('pengumuman_stat'=>'publish'))->num_rows(); ?>
-              <div class="inner">
-                <h3><?php echo $jmlproducts1; ?></h3>
-                <p>Pengumuman</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-bullhorn"></i>
-              </div>
-            <a href="<?php echo base_url('paneladmin/pengumuman') ?>" class="small-box-footer">Info Lengkap <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-
-          </div>
-        </div>
-        -->
+      <
         <!-- Main row -->
         <div class="row">
 
