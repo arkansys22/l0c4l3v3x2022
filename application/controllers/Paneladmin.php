@@ -1246,7 +1246,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function workshop_delete()
 	{
-
+		
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('workshop',['workshop_id' => $id])->row();
 			 $query = $this->db->delete('workshop',['workshop_id'=>$id]);
@@ -2269,7 +2269,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function products_delete()
 	{
-
+			cek_session_akses ('products',$this->session->id_session);
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('products',['products_id' => $id])->row();
 			 $query = $this->db->delete('products',['products_id'=>$id]);
@@ -3602,7 +3602,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function products_cat_delete()
 	{
-		
+			cek_session_akses ('products_cat',$this->session->id_session);
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('products_category',['products_cat_id' => $id])->row();
 			 $query = $this->db->delete('products_category',['products_cat_id'=>$id]);
