@@ -119,7 +119,7 @@ class Paneladmin extends CI_Controller {
             $this->form_validation->set_rules('password2', '','required|matches[password]', array('required' => 'Konfirmasi password masih kosong','matches'=>'Password tidak sama! Cek kembali password Anda'));
 
             if($this->form_validation->run() === FALSE){
-                $this->load->view('backend/register', $data);
+                $this->load->view('backend/register/visitor', $data);
             }else{
                 $enc_password = sha1($this->input->post('password'));
 								$data_user = array(
@@ -1246,7 +1246,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function workshop_delete()
 	{
-		
+
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('workshop',['workshop_id' => $id])->row();
 			 $query = $this->db->delete('workshop',['workshop_id'=>$id]);
