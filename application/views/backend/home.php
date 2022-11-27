@@ -23,8 +23,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-<<<<<<< HEAD
+
         <div class="row">
         <?php  if($this->session->level=='1'){ ?>
           <div class="col-lg-3 col-6">
@@ -42,12 +41,8 @@
             </div>
           </div>
           <?php } ?>
-            
+
         </div>
-        <!-- /.row -->
-=======
-      <
->>>>>>> 42cf6319091cf091480b9dbec2cf805972a6f4bb
         <!-- Main row -->
         <div class="row">
 

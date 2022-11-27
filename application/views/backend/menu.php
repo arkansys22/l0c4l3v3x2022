@@ -122,19 +122,6 @@
         <?php } ?>
       </li>
 
-<<<<<<< HEAD
-
-      <!-- <li class="nav-item">
-        <a href="<?php echo base_url(); ?>paneladmin/pengumuman" class="nav-link " >
-          <i class="nav-icon fas fa-bullhorn"></i>
-          <p>
-            Pengumuman
-          </p>
-        </a>
-      </li> -->
-
-=======
->>>>>>> 42cf6319091cf091480b9dbec2cf805972a6f4bb
       <?php  if($this->session->level=='1' OR $this->session->level=='2'){ ?>
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -144,35 +131,13 @@
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
-
           <ul class="nav nav-treeview">
-
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>paneladmin/products_cat" class="nav-link ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Kategori</p>
               </a>
             </li>
-
-
-            <!-- <li class="nav-item">
-              <a href="<?php echo base_url(); ?>paneladmin/products" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Portfolio</p>
-              </a>
-<<<<<<< HEAD
-            </li> -->
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>paneladmin/services" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Layanan</p>
-              </a>
-            </li>
-=======
-            </li>
-        
->>>>>>> 42cf6319091cf091480b9dbec2cf805972a6f4bb
-
           </ul>
         </li>
         <li class="nav-item ">
