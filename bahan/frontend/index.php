@@ -1,3 +1,3 @@
 <?php
-header ('Location:http://localhost/pekhalong.com/');
+header ('Location:https://komodotransport.com/');
 ?>

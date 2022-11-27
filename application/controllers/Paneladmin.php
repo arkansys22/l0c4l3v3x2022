@@ -582,22 +582,6 @@ class Paneladmin extends CI_Controller {
 
 			$proses = $this->Panel_m->edit('identitas', array('id_identitas' => 1))->row_array();
 			$data = array('record' => $proses);
-			$data['karyawan_menu_open']   = '';
-			$data['home_stat']   = '';
-			$data['identitas_stat']   = 'active';
-			$data['profil_stat']   = '';
-			$data['sliders_stat']   = '';
-			$data['products_stat']   = '';
-			$data['cat_products_stat']   = '';
-			$data['testimonial_stat']   = '';
-			$data['blogs_stat']   = '';
-			$data['message_stat']   = '';
-			$data['gallery_stat']   = '';
-			$data['produk_menu_open']   = '';
- 			$data['produk_category']   = '';
- 			$data['produk']   = '';
- 			$data['services']   = '';
-			 		$data['kehadiran_menu_open']   = ''; 	    $data['jamkerja_stat']   = ''; 	    $data['absen_stat']   = ''; 	    $data['dataabsen_stat']   = ''; 	    $data['cuti_stat']   = ''; 	    $data['gaji_stat']   = ''; 	    $data['pengumuman_stat']   = ''; 	    $data['konfig_stat']   = '';
 			$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
 			$this->load->view('backend/identitas/views', $data);
 		}
@@ -2360,7 +2344,7 @@ class Paneladmin extends CI_Controller {
 				}
 			$this->load->view('backend/data_karyawan/v_daftar_hapus', $data);
 	}
-	public function data_karyawan_tambahkan()
+	public function add_user()
 	{
 
 		if (isset($_POST['submit'])){
@@ -3633,60 +3617,16 @@ class Paneladmin extends CI_Controller {
 	/*	Bagian untuk products cat - Pembuka	*/
 	public function services()
 	{
-		$data['karyawan_menu_open']   = '';
-		$data['home_stat']   = '';
-		$data['identitas_stat']   = '';
-		$data['profil_stat']   = '';
-		$data['sliders_stat']   = '';
-		$data['products_stat']   = '';
-		$data['cat_products_stat']   = '';
-		$data['testimonial_stat']   = '';
-		$data['blogs_stat']   = '';
-		$data['message_stat']   = '';
-		$data['gallery_stat']   = '';
-		$data['kehadiran_menu_open']   = '';
-			$data['jamkerja_stat']   = '';
-			$data['absen_stat']   = '';
-			$data['dataabsen_stat']   = '';
-			$data['cuti_stat']   = '';
-			$data['gaji_stat']   = '';
-			$data['pengumuman_stat']   = '';
-			$data['konfig_stat']   = '';
-			$data['produk_menu_open']   = 'menu-open';
-			$data['produk_category']   = '';
-			$data['produk']   = '';
 			$data['services']   = 'active';
 				if ($this->session->level=='1'){
-						$data['record'] = $this->Crud_m->view_where_ordering('services',array('services_status'=>'publish'),'services_id','DESC');
+						$data['record'] = $this->Crud_m->view_where_ordering('services',array('services_status'=>'publish'),'services_post_tanggal','DESC');
 				}else{
-						$data['record'] = $this->Crud_m->view_where_ordering('services',array('services_post_oleh'=>$this->session->username,'services_status'=>'publish'),'services_id','DESC');
+						$data['record'] = $this->Crud_m->view_where_ordering('services',array('services_post_oleh'=>$this->session->username,'services_status'=>'publish'),'services_post_tanggal','DESC');
 				}
 				$this->load->view('backend/services/v_daftar', $data);
 	}
 	public function services_storage_bin()
 	{
-		$data['karyawan_menu_open']   = '';
-		$data['home_stat']   = '';
-		$data['identitas_stat']   = '';
-		$data['profil_stat']   = '';
-		$data['sliders_stat']   = '';
-		$data['products_stat']   = '';
-		$data['cat_products_stat']   = '';
-		$data['testimonial_stat']   = '';
-		$data['blogs_stat']   = '';
-		$data['message_stat']   = '';
-		$data['gallery_stat']   = '';
-		$data['kehadiran_menu_open']   = '';
-			$data['jamkerja_stat']   = '';
-			$data['absen_stat']   = '';
-			$data['dataabsen_stat']   = '';
-			$data['cuti_stat']   = '';
-			$data['gaji_stat']   = '';
-			$data['pengumuman_stat']   = '';
-			$data['konfig_stat']   = '';
-			$data['produk_menu_open']   = 'menu-open';
-			$data['produk_category']   = '';
-			$data['produk']   = '';
 			$data['services']   = 'active';
 				if ($this->session->level=='1'){
 						$data['record'] = $this->Crud_m->view_where_ordering('services',array('services_status'=>'delete'),'services_id','DESC');
@@ -3742,6 +3682,7 @@ class Paneladmin extends CI_Controller {
 													'services_judul'=>$this->db->escape_str($this->input->post('services_judul')),
 													'services_judul_seo'=>$this->mylibrary->seo_title($this->input->post('services_judul')),
 													'services_judul_konten'=>$this->db->escape_str($this->input->post('services_judul_konten')),
+													'services_harga'=>$this->db->escape_str($this->input->post('services_harga')),
 													'products_cat_id'=>$this->input->post('products_cat_id'),
 													'services_desk'=>$this->input->post('services_desk'),
 													'services_post_hari'=>hari_ini(date('w')),
@@ -3757,6 +3698,7 @@ class Paneladmin extends CI_Controller {
 													'services_judul'=>$this->db->escape_str($this->input->post('services_judul')),
 													'services_judul_seo'=>$this->mylibrary->seo_title($this->input->post('services_judul')),
 													'services_judul_konten'=>$this->db->escape_str($this->input->post('services_judul_konten')),
+													'services_harga'=>$this->db->escape_str($this->input->post('services_harga')),
 													'products_cat_id'=>$this->input->post('products_cat_id'),
 													'services_desk'=>$this->input->post('services_desk'),
 													'services_post_hari'=>hari_ini(date('w')),
@@ -3771,28 +3713,7 @@ class Paneladmin extends CI_Controller {
 								$this->Panel_m->insert('services',$data);
 								redirect('paneladmin/services');
 				}else{
-					$data['karyawan_menu_open']   = '';
-					$data['home_stat']   = '';
-					$data['identitas_stat']   = '';
-					$data['profil_stat']   = '';
-					$data['sliders_stat']   = '';
-					$data['products_stat']   = '';
-					$data['cat_products_stat']   = '';
-					$data['testimonial_stat']   = '';
-					$data['blogs_stat']   = '';
-					$data['message_stat']   = '';
-					$data['gallery_stat']   = '';
-					$data['kehadiran_menu_open']   = '';
-					$data['jamkerja_stat']   = '';
-					$data['absen_stat']   = '';
-					$data['dataabsen_stat']   = '';
-					$data['cuti_stat']   = '';
-					$data['gaji_stat']   = '';
-					$data['pengumuman_stat']   = '';
-					$data['konfig_stat']   = '';
-					$data['produk_menu_open']   = 'menu-open';
-					$data['produk_category']   = '';
-					$data['produk']   = '';
+
 					$data['services']   = 'active';
 					$data['records'] = $this->Crud_m->view_ordering('products_category','products_cat_id','DESC');
 					$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
@@ -3847,6 +3768,7 @@ class Paneladmin extends CI_Controller {
 											'services_judul'=>$this->db->escape_str($this->input->post('services_judul')),
 											'services_judul_seo'=>$this->mylibrary->seo_title($this->input->post('services_judul')),
 											'services_judul_konten'=>$this->db->escape_str($this->input->post('services_judul_konten')),
+											'services_harga'=>$this->db->escape_str($this->input->post('services_harga')),
 											'products_cat_id'=>$this->input->post('products_cat_id'),
 											'services_desk'=>$this->input->post('services_desk'),
 											'services_update_hari'=>hari_ini(date('w')),
@@ -3862,6 +3784,7 @@ class Paneladmin extends CI_Controller {
 											'services_judul'=>$this->db->escape_str($this->input->post('services_judul')),
 											'services_judul_seo'=>$this->mylibrary->seo_title($this->input->post('services_judul')),
 											'services_judul_konten'=>$this->db->escape_str($this->input->post('services_judul_konten')),
+											'services_harga'=>$this->db->escape_str($this->input->post('services_harga')),
 											'products_cat_id'=>$this->input->post('products_cat_id'),
 											'services_desk'=>$this->input->post('services_desk'),
 											'services_update_hari'=>hari_ini(date('w')),
@@ -3886,29 +3809,7 @@ class Paneladmin extends CI_Controller {
 					$proses = $this->Panel_m->edit('services', array('services_id' => $id, 'services_post_oleh' => $this->session->username))->row_array();
 			}
 			$data = array('rows' => $proses);
-			$data['karyawan_menu_open']   = '';
-			$data['home_stat']   = '';
-			$data['identitas_stat']   = '';
-			$data['profil_stat']   = '';
-			$data['sliders_stat']   = '';
-			$data['products_stat']   = '';
-			$data['cat_products_stat']   = '';
-			$data['testimonial_stat']   = '';
-			$data['blogs_stat']   = '';
-			$data['message_stat']   = '';
-			$data['gallery_stat']   = '';
-			$data['kehadiran_menu_open']   = '';
-				$data['jamkerja_stat']   = '';
-				$data['absen_stat']   = '';
-				$data['dataabsen_stat']   = '';
-				$data['cuti_stat']   = '';
-				$data['gaji_stat']   = '';
-				$data['pengumuman_stat']   = '';
-				$data['konfig_stat']   = '';
-				$data['produk_menu_open']   = 'menu-open';
-				$data['produk_category']   = '';
-				$data['produk']   = '';
-				$data['services']   = 'active';
+			$data['services']   = 'active';
 			$data['records'] = $this->Crud_m->view_ordering('products_category','products_cat_id','DESC');
 			$data['tag'] = $this->Crud_m->view_ordering('keyword','keyword_id','DESC');
 			$this->load->view('backend/services/v_update', $data);

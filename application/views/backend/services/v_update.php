@@ -51,8 +51,16 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="form-group">
-                        <label>Judul Konten</label>
+                        <label>Judul</label>
                         <input type="text" class="form-control" name="services_judul_konten" value="<?php echo $rows['services_judul_konten'] ?>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Harga</label>
+                        <input type="number" class="form-control" name="services_harga" value="<?php echo $rows['services_harga'] ?>">
                       </div>
                     </div>
                   </div>

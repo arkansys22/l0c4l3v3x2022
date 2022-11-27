@@ -31,6 +31,7 @@
                 <thead>
                 <tr>
                   <th>Tanggal</th>
+                  <th>Dilihat</th>
                   <th>Judul</th>
                   <th>Aksi</th>
                 </tr>
@@ -44,7 +45,8 @@
 
                 <tr>
                   <td><?=$tgl_posting?></td>
-                  <td><?=$row['services_judul']?></td>
+                  <td><?=$row['services_dibaca']?></td>
+                  <td><?=$row['services_judul_konten']?></td>
                   <td>
                     <?php
                     echo"<a class='btn btn-primary btn-sm' title='Edit Data' href='".base_url()."paneladmin/services_update/$row[services_id]'><i class='fas fa-edit'></i></a>
@@ -55,13 +57,7 @@
               <?php } ?>
 
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Date</th>
-                  <th>Title</th>
-                  <th>Action</th>
-                </tr>
-                </tfoot>
+              
               </table>
             </div>
             <!-- /.card-body -->

@@ -51,8 +51,16 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="form-group">
-                        <label>Judul Konten</label>
-                        <input type="text" class="form-control" name="services_judul_konten" placeholder="Judul layanan ini">
+                        <label>Judul</label>
+                        <input type="text" class="form-control" name="services_judul_konten" placeholder="Judul layanan">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label>Harga</label>
+                        <input type="number" class="form-control" name="services_harga" placeholder="Harga layanan">
                       </div>
                     </div>
                   </div>

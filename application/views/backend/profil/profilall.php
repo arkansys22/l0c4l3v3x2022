@@ -30,7 +30,7 @@
           <!-- Profile Image -->
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
-              <div class="text-center">        
+              <div class="text-center">
                      <?php if(empty($users['user_gambar'])) { ?>
                        <img src="<?php echo base_url()?>bahan/foto_profil/logo-default.png" class="profile-user-img img-fluid img-circle" alt="User Image">
                      <?php }else { ?>
@@ -101,11 +101,19 @@
                       <label class="col-sm-3 col-form-label">Foto profil</label>
                       <div class="col-sm-9">
                         <div class="custom-file">
+                          <input type="file" accept="image/*" capture="camera" name="gambar">
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Foto profil</label>
+                      <div class="col-sm-9">
+                        <div class="custom-file">
                           <input type="file" class="custom-file-input" name="gambar">
                           <label class="custom-file-label" for="exampleInputFile">Belum ada upload foto profil <?php echo $record['user_gambar'] ?></label>
                         </div>
                       </div>
-
                     </div>
                     <div class="form-group row">
                       <label class="col-sm-3 col-form-label">Penampakan</label>

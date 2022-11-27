@@ -17,9 +17,6 @@ class Notfound extends CI_Controller {
 			$dari = $this->uri->segment('4');
 		}
 		if (is_numeric($dari)) {
-		$config['per_page'] = 3;
-		$config['per_page2'] = 12;
-		$data['posts_cat_product'] = $this->Crud_m->view_one_limit('products_category','products_cat_status','products_cat_id','RANDOM',$dari,$config['per_page2']);
 		$data['identitas']= $this->Crud_m->get_by_id_identitas($id='1');
 	}else{
 		redirect(base_url());

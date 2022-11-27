@@ -74,7 +74,7 @@
           </p>
         </a>
       </li>
-    <?php  if($this->session->level=='1' OR $this->session->level=='2'){ ?>
+    <?php  if($this->session->level=='1'){ ?>
       <li class="nav-item">
         <a href="<?php echo base_url(); ?>paneladmin/identitaswebsite" class="nav-link" >
           <i class="nav-icon fas fa-cogs"></i>
@@ -85,50 +85,35 @@
       </li>
       <?php }?>
       <?php  if($this->session->level=='1'){ ?>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a href="<?php echo base_url(); ?>paneladmin/konsumen" class="nav-link" >
           <i class="nav-icon fas fa-user-check"></i>
           <p>
             Daftar Klien
           </p>
         </a>
-      </li>
+      </li> -->
 
 
       <li class="nav-item">
         <a href="#" class="nav-link">
           <i class="nav-icon far fas fa-fw fa-users"></i>
           <p>
-            Karyawan
+            Pengguna
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
 
 
         <ul class="nav nav-treeview">
-
           <li class="nav-item">
             <a href="<?php echo base_url(); ?>paneladmin/divisi" class="nav-link ">
               <i class="far fa-circle nav-icon"></i>
               <p>Divisi / Posisi</p>
             </a>
           </li>
-
-
           <li class="nav-item">
-            <a href="<?php echo base_url(); ?>paneladmin/lowongan" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Lowongan</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url(); ?>paneladmin/permohonan" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Permohonan</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo base_url(); ?>paneladmin/data_karyawan" class="nav-link ">
+            <a href="<?php echo base_url(); ?>paneladmin/add_user" class="nav-link ">
               <i class="far fa-circle nav-icon"></i>
               <p>Data Karyawan</p>
             </a>
@@ -138,14 +123,14 @@
       </li>
 
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a href="<?php echo base_url(); ?>paneladmin/pengumuman" class="nav-link " >
           <i class="nav-icon fas fa-bullhorn"></i>
           <p>
             Pengumuman
           </p>
         </a>
-      </li>
+      </li> -->
 
       <?php  if($this->session->level=='1' OR $this->session->level=='2'){ ?>
         <li class="nav-item">
@@ -167,12 +152,12 @@
             </li>
 
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="<?php echo base_url(); ?>paneladmin/products" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Portfolio</p>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>paneladmin/services" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
@@ -190,19 +175,19 @@
             </p>
           </a>
         </li>
-        <li class="nav-item ">
+        <!-- <li class="nav-item ">
           <a href="<?php echo base_url(); ?>paneladmin/equipment" class="nav-link">
             <i class="nav-icon fas fa-photo-video"></i>
             <p>
               Equipment
             </p>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item ">
           <a href="<?php echo base_url(); ?>paneladmin/workshop" class="nav-link">
-            <i class="nav-icon fas fa-donate"></i>
+            <i class="nav-icon fas fa-sliders-h"></i>
             <p>
-              Workshop
+              Slider
             </p>
           </a>
         </li>
@@ -210,9 +195,9 @@
         <?php  if($this->session->level=='1'){ ?>
         <li class="nav-item ">
           <a href="<?php echo base_url(); ?>paneladmin/testimonial" class="nav-link">
-            <i class="nav-icon fas fa-cogs"></i>
+            <i class="nav-icon far fa-images"></i>
             <p>
-              Reviews
+              Logo - Logo
             </p>
           </a>
         </li>

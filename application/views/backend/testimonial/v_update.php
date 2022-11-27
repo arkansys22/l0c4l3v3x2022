@@ -48,23 +48,7 @@
                       </div>
                     </div>
                   </div>
-                   <div class="row">
-                  <div class="col-sm-12">
-                  <div class="form-group">
-                    <label for="inputName" class="col-sm-3 col-form-label">Category</label>
-                    <div class="col-sm-12">
-                      <select name='products_cat_id' class="form-control select2" style="width: 100%;">
-                        <?php foreach ($records as $row) {
-                          if ($rows['products_cat_id'] == $row['products_cat_id']){
-                            echo"<option selected='selected' value='$row[products_cat_id]'>$row[products_cat_judul]</option>";
-                          }else{
-                            echo"<option value='$row[products_cat_id]'>$row[products_cat_judul]</option>";
-                       }
-                     } ?>
-                    </select>
-                    </div>
-                  </div>
-                </div></div>
+                  
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="form-group">

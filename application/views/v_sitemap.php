@@ -6,16 +6,6 @@
      <priority>1.0</priority>
   </url>
   <url>
-     <loc><?php echo base_url("works/");?></loc>
-     <priority>0.5</priority>
-  </url>
-  <?php foreach($works as $data) { ?>
-  <url>
-     <loc><?php echo base_url("works/").$data->products_judul_seo;?></loc>
-     <priority>0.5</priority>
-  </url>
-  <?php } ?>
-  <url>
      <loc><?php echo base_url("services/");?></loc>
      <priority>0.5</priority>
   </url>
@@ -25,18 +15,7 @@
      <priority>0.5</priority>
   </url>
   <?php } ?>
-  <url>
-     <loc><?php echo base_url("reviews/");?></loc>
-     <priority>0.5</priority>
-  </url>
-  <url>
-     <loc><?php echo base_url("about/");?></loc>
-     <priority>0.5</priority>
-  </url>
-  <url>
-     <loc><?php echo base_url("blogs/");?></loc>
-     <priority>0.5</priority>
-  </url>
+  
   <?php foreach($blogs as $data) { ?>
   <url>
      <loc><?php echo base_url("blogs/").$data->blogs_judul_seo;?></loc>

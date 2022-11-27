@@ -46,6 +46,17 @@ class Crud_m extends CI_model{
          $this->db->order_by($order,$ordering);
          return $this->db->get()->result();
      }
+     public function view_where_orderings_limit($table,$data,$order,$ordering,$dari,$baris)
+       {
+            $this->db->select('*');
+            $this->db->from($table);
+            $this->db->where($data);
+            $this->db->limit($dari, $baris);
+            $this->db->order_by($order,$ordering);
+            return $this->db->get()->result();
+        }
+
+
 
      public function view_join_where_orderings($table1,$table2,$field,$data,$order,$ordering)
        {
@@ -245,6 +256,17 @@ class Crud_m extends CI_model{
         $this->db->where('blogs_judul_seo', urldecode($id));
         $this->db->set('blogs_dibaca', ($count->blogs_dibaca + 1));
         $this->db->update('blogs');
+    }
+    function update_counters($id,$table,$judul_seo,$dibaca)
+   {
+        
+        $this->db->where($judul_seo, urldecode($id));
+        $this->db->select($dibaca);
+        $count = $this->db->get($table)->row();
+        // then increase by one
+        $this->db->where($judul_seo, urldecode($id));
+        $this->db->set($dibaca, ($count->$dibaca + 1));
+        $this->db->update($table);
     }
 
   public function view_ordering_limits($table,$order,$ordering,$baris,$dari)

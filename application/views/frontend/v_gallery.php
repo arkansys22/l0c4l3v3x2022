@@ -29,103 +29,130 @@
 
 </head>
 <body>
-    <!--loader-->
-    <div class="loader-wrap">
-        <div class="spinner">
-            <div class="double-bounce1"></div>
-            <div class="double-bounce2"></div>
-        </div>
-    </div>
-    <!--loader end-->
-    <!-- main start  -->
-    <div id="main">
-        <!-- header start  -->
-        <?php $this->load->view('frontend/menu')?>
-        <!-- header end -->
-        <!-- wrapper  -->
-        <div id="wrapper">
-          <div class="content">
-              <!-- bottom-filter-wrap -->
-              <div class="bottom-filter-wrap hor-filter-wrap">
-                  <div class="scroll-down-wrap">
-                      <div class="mousey">
-                          <div class="scroller"></div>
-                      </div>
-                      <span>Scroll down to discover</span>
-                  </div>
+  <div class="preloader">
+      <div class="loader_grid">
+        <div class="loader_box loader_box1"></div>
+        <div class="loader_box loader_box2"></div>
+        <div class="loader_box loader_box3"></div>
+        <div class="loader_box loader_box4"></div>
+        <div class="loader_box loader_box5"></div>
+        <div class="loader_box loader_box6"></div>
+        <div class="loader_box loader_box7"></div>
+        <div class="loader_box loader_box8"></div>
+        <div class="loader_box loader_box9"></div>
+      </div>
+  </div>
 
-              </div>
-              <!-- bottom-filter-wrap end -->
-              <div class="ff_panel-conainer fl-wrap">
-                  <!-- portfolio start -->
-                  <div class="gallery-items min-pad   four-column fl-wrap lightgallery">
-                      <!-- gallery-item-->
-                      <?php foreach ($posts as $post) {  ?>
-                      <div class="gallery-item nature">
-                          <div class="grid-item-holder hov_zoom">
-                            <?php if(empty($post->gallery_gambar)) {
-                                echo "<img src='".base_url()."bahan/foto_products/noimage.jpg'>";
-                              }else {
-                                echo " <img src='".base_url('./bahan/foto_gallery/'.$post->gallery_gambar)."'>
-                                        <a href='".base_url('./bahan/foto_gallery/'.$post->gallery_gambar)."' class='box-media-zoom   popup-image'><i class='fal fa-search'></i></a>
-                                ";}
-                             ?>
-                              <div class="thumb-info">
-                                  <h3><?php echo $post->gallery_judul?></h3>
-                                  <p><?php echo $post->gallery_desk?></p>
-                              </div>
-                          </div>
-                      </div>
-                    <?php } ?>
+    <?php $this->load->view('frontend/menu')?>
 
+    <section class="small_pb small_pt">
+    	<div class="container">
+        <div class="row">
+            <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                <div class="heading_s1 text-center">
+                    <h2>KOMODO TRANSPORT GALLERY</h2>
                   </div>
-                  <!-- portfolio end -->
               </div>
           </div>
-            <!--thumbnail-container end-->
-            <!--share-wrapper-->
-            <div class="share-wrapper">
-                <div class="share-container fl-wrap  isShare"></div>
-            </div>
-            <!--share-wrapper end-->
-        </div>
-        <!-- wrapper end -->
-        <!-- sidebar -->
-        <div class="sb-overlay"></div>
-        <div class="hiiden-sidebar-wrap outsb">
-            <!-- sb-widget-wrap-->
-            <div class="sb-widget-wrap fl-wrap">
-                <h3>Office & Workshop</h3>
-                <div class="sb-widget  fl-wrap">
-                    <p>Office : Jl. Kelapa puyuh raya blok KE No.19, Kelapa Gading, Jakarta Utara</p>
-                    <p>Workshop & Office : Jl. Caringin No. 235 Bandung, Jawa Barat</p>
-                    <p>Workshop & Office : Jl. Dewi Sri No. 19 Renon Denpasar, Bali</p>
-                    <p>Workshop & Office : Jl. Pahlawan Ende No. 257, Labuan Baju, NTT</p>
+          <div class="row">
+            <div class="col-md-12">
+                <div class="clearfix small_divider"></div>
+              </div>
+          </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="portfolio_container work_col3 gutter_small image_gallery">
+                        <li class="grid-sizer"></li>
+                          <?php foreach ($posts as $post_gallery) { ?>
+                        <li class="portfolio-item">
+                          <?php if(empty($post_gallery->gallery_gambar)) {
+                              echo "<img src='".base_url()."bahan/foto_products/noimage.jpg'>";
+                            }else {
+                              echo " <a href='".base_url('./bahan/foto_gallery/'.$post_gallery->gallery_gambar)."'><img src='".base_url('./bahan/foto_gallery/'.$post_gallery->gallery_gambar)."'></a>
+                              ";}
+                           ?>
+                        </li>
+                      <?php } ?>
+                    </ul>
                 </div>
             </div>
-            <!-- sb-widget-wrap end-->
-            <!-- sb-widget-wrap-->
-            <div class="sb-widget-wrap fl-wrap">
-                <h3>We're Are Social</h3>
-                <div class="sb-widget    fl-wrap">
-                    <div class="sidebar-social fl-wrap">
-                        <ul>
-                            <li><a href="<?php echo $identitas->facebook?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="<?php echo $identitas->instagram?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="<?php echo $identitas->youtube?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
+        </div>
+    </section>
 
+    <footer class="pattern_top footer_dark">
+      <div class="top_footer" style="background-color:#2b78bd;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 mb-4 mb-lg-0 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                      <div class="footer_logo">
+                          <a href="<?php echo base_url()?>"><img alt="logo" src="<?php echo base_url()?>bahan/backend/foto/<?php echo $identitas->logo?>"></a>
+                        </div>
+                        <p><?php echo $identitas->slogan?></p>
+                        <ul class="contact_info contact_info_light list_none">
+                            <li>
+                                <span class="ti-location-pin"></span>
+                                <address><?php echo $identitas->alamat?></address>
+                            </li>
+                            <li>
+                                <span class="ti-email"></span>
+                                <a href="mailto:<?php echo $identitas->email?>"><?php echo $identitas->email?></a>
+                            </li>
+                            <li>
+                                <span class="ti-mobile"></span>
+                                <p><?php echo $identitas->no_telp?></p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 animation" data-animation="fadeInUp" data-animation-delay="0.4s">
+                      <h6 class="widget_title">TRENDING JOURNEY</h6>
+                        <ul class="recent_post border_bottom_dash list_none">
+                          <?php $blogs = $this->Crud_m->view_where_orderings_limit('blogs',array('blogs_status'=>'publish'),'blogs_dibaca','desc','3','1'); ?>
+                              <?php foreach ($blogs as $post_blog) {
+                                  $tgl_posting = $this->mylibrary->tgl_indo($post_blog->blogs_post_tanggal);
+                                ?>
+                                <li>
+                                    <div class="post_footer">
+                                        <div class="post_img">
+                                            <a href="#">
+                                              <?php if(empty($post_blog->blogs_gambar)) {
+                                                  echo "<img src='".base_url()."bahan/foto_products/noimage.jpg'>";
+                                                }else {
+                                                  echo " <img src='".base_url('./bahan/foto_blogs/'.$post_blog->blogs_gambar)."'>
+
+                                                  ";}
+                                               ?>
+                                             </a>
+                                          </div>
+                                          <div class="post_content">
+                                            <h6><a href="<?php echo base_url() ?>blogs/<?php echo $post_blog->blogs_judul_seo?>"><?php echo $post_blog->blogs_judul?></a></h6>
+                                              <p class="small m-0"><?php echo $post_blog->blogs_dibaca?> views</p>
+                                          </div>
+                                      </div>
+                                  </li>
+                              <?php } ?>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 animation" data-animation="fadeInUp" data-animation-delay="0.5s">
+                        <h6 class="widget_title">OUR SOSIAL MEDIA</h6>
+                        <ul class="list_none footer_social">
+                          <li><a href="https://api.whatsapp.com/send/?phone=<?php echo $identitas->whatsapp ?>&text=Hallo+Komodo+Transport.."><i class="ion-social-whatsapp-outline"></i></a></li>
+                          <li><a href="<?php echo $identitas->facebook?>"><i class="ion-social-facebook"></i></a></li>
+                          <li><a href="<?php echo $identitas->instagram?>"><i class="ion-social-instagram-outline"></i></a></li>
+                          <li><a href="<?php echo $identitas->youtube?>"><i class="ion-social-youtube-outline"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- sidebar end -->
-        <!-- cursor-->
-        <div class="element">
-            <div class="element-item"></div>
-        </div>
-        <!-- cursor end-->
-    </div>
-      <?php $this->load->view('frontend/js')?>
+        <?php $this->load->view('frontend/v_footer')?>
+    </footer>
+    <!-- END FOOTER SECTION -->
+
+    <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
+
+
+
+  <?php $this->load->view('frontend/js')?>
 </body>
 </html>

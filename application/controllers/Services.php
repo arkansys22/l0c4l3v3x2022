@@ -67,6 +67,7 @@ class Services extends CI_Controller {
                     
                     
 					$data['posts']            = $this->Crud_m->get_by_id_services($services_id);
+					$this->add_count($services_id);
 					$data['identitas']= $this->Crud_m->get_by_id_identitas($id='1');
 					
     			$this->load->view('frontend/v_services_detail', $data);
@@ -79,5 +80,15 @@ class Services extends CI_Controller {
             }
   			}
 
+    	function add_count($services_id)
+	{
+			$check_visitor = $this->input->cookie(urldecode($services_id), FALSE);
+			$ip = $this->input->ip_address();
+			if ($check_visitor == false) {
+					$cookie = array("name" => urldecode($services_id), "value" => "$ip", "expire" => time() + 10, "secure" => false);
+					$this->input->set_cookie($cookie);
+					$this->Crud_m->update_counters(urldecode($services_id),'services','services_judul_seo','services_dibaca');
+			}
+	}
 
 }

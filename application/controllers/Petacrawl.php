@@ -8,7 +8,6 @@ class Petacrawl extends CI_Controller {
      $this->load->model('Sitemap_model');
      $data['blogs'] = $this->Sitemap_model->generate_blogs('blogs');
      $data['services'] = $this->Sitemap_model->generate_services('services');
-     $data['works'] = $this->Sitemap_model->generate_works('products');
      $this->load->view('v_sitemap',$data);
  }
 

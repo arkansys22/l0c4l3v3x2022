@@ -8,7 +8,7 @@
     <title>404 Halaman Tidak Ada - <?php echo $identitas->nama_website?></title>
     <meta name="title" content="<?php echo $identitas->nama_website?> <?php echo $identitas->no_telp?> | <?php echo $identitas->meta_keyword?>">
     <meta property="og:title" content="<?php echo $identitas->nama_website?> <?php echo $identitas->no_telp?> | <?php echo $identitas->meta_keyword?>">
-    <meta NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    <meta NAME="ROBOTS" CONTENT="noindex, nofollow">
     <meta name="site_url" content="<?php echo base_url()?>">
     <meta name="description" content="<?php echo $identitas->meta_deskripsi?>">
     <meta name="keywords" content="<?php echo $identitas->meta_keyword?>">

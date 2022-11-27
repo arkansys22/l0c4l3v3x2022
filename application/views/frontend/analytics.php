@@ -7,6 +7,17 @@
     </script>
     <meta name="google-site-verification" content="<?php echo $identitas->seo?>" />
 
+    <!-- Global site tag (gtag.js) - Google Ads: 847900920 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-847900920"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'AW-847900920');
+    </script>
+
+
     <!-- Facebook Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
