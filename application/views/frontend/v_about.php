@@ -72,7 +72,7 @@
                 <section id="sec1">
                     <div class="container small-container">
                         <div class="section-title fl-wrap">
-                            <h3>About <?php echo $identitas->nama_website?></h3>
+                            <h3>About Us</h3>
                             <div class="section-number">01.</div>
                         </div>
                         <div class="column-wrapper_item fl-wrap">
@@ -95,7 +95,7 @@
                                     </div>
                                   <?php } ?>
                                 </div>
-                                <a href="https://api.whatsapp.com/send/?phone=+62<?php echo $identitas->whatsapp?>&text=Hallo+Localevex+Kami+Membutuhkan+Bantuan+Kalian.." class="btn fl-btn">Chat With Us</a>
+                                <a href="<?php echo base_url() ?>portfolio/hybrid-event" class="btn fl-btn">My Portfolio</a>
                             </div>
                         </div>
                     </div>
