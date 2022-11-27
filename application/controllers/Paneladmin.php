@@ -1026,7 +1026,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function gallery_delete()
 	{
-			cek_session_akses ('gallery',$this->session->id_session);
+
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('gallery',['gallery_id' => $id])->row();
 			 $query = $this->db->delete('gallery',['gallery_id'=>$id]);
@@ -1246,7 +1246,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function workshop_delete()
 	{
-			cek_session_akses ('workshop',$this->session->id_session);
+
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('workshop',['workshop_id' => $id])->row();
 			 $query = $this->db->delete('workshop',['workshop_id'=>$id]);
@@ -1471,7 +1471,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function equipment_delete()
 	{
-			cek_session_akses ('equipment',$this->session->id_session);
+
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('equipment',['equipment_id' => $id])->row();
 			 $query = $this->db->delete('equipment',['equipment_id'=>$id]);
@@ -2269,7 +2269,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function products_delete()
 	{
-			cek_session_akses ('products',$this->session->id_session);
+
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('products',['products_id' => $id])->row();
 			 $query = $this->db->delete('products',['products_id'=>$id]);
@@ -3478,7 +3478,7 @@ class Paneladmin extends CI_Controller {
 													'products_cat_post_jam'=>date('H:i:s'),
 													'products_cat_dibaca'=>'0',
 													'products_cat_status'=>'publish',
-													'products_catgambar'=>$hasil22['file_name'],
+													'products_cat_gambar'=>$hasil22['file_name'],
 													'products_cat_meta_desk'=>$this->input->post('products_cat_meta_desk'),
 													'products_cat_keyword'=>$tag);
 												}
@@ -3602,7 +3602,7 @@ class Paneladmin extends CI_Controller {
 	}
 	public function products_cat_delete()
 	{
-			cek_session_akses ('products_cat',$this->session->id_session);
+		
 			$id = $this->uri->segment(3);
 			$_id = $this->db->get_where('products_category',['products_cat_id' => $id])->row();
 			 $query = $this->db->delete('products_category',['products_cat_id'=>$id]);

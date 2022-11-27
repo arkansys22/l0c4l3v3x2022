@@ -46,6 +46,7 @@
   </div>
 
     <?php $this->load->view('frontend/menu')?>
+<<<<<<< HEAD
     <section class="banner_section p-0 full_screen">
         <div id="carouselExampleControls" class="banner_content_wrap carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
@@ -270,6 +271,31 @@
                                         </ul>
                                         <a href="<?php echo base_url() ?>blogs/<?php echo $post_blog->blogs_judul_seo?>" class="text-capitalize">Read More</a>
                                     </div>
+=======
+    <div id="wrapper">
+        <!--content -->
+        <div class="content full-height  hidden-item no-mob-hidden">
+            <!-- fw-carousel-wrap -->
+            <div class="fw-carousel-wrap fsc-holder">
+                <!-- fw-carousel  -->
+                <div class="fw-carousel  fs-gallery-wrap fl-wrap full-height lightgallery" data-mousecontrol="true">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                          <?php $kategori_produk = $this->Crud_m->view_where_orderings('products_category',array('products_cat_status'=>'publish'),'products_cat_id','ASC'); ?>
+                          <?php foreach ($kategori_produk as $post) {  ?>
+                            <!-- swiper-slide-->
+                            <div class="swiper-slide hov_zoom">
+                              <?php if(empty($post->products_cat_gambar)) {
+                                  echo "<img src='".base_url()."bahan/foto_products/noimage.jpg'>";
+                                }else {
+                                  echo " <img src='".base_url('./bahan/foto_products/'.$post->products_cat_gambar)."'>
+                                          <a href='".base_url('./bahan/foto_products/'.$post->products_cat_gambar)."' class='box-media-zoom   popup-image'><i class='fal fa-search'></i></a>
+                                  ";}
+                               ?>
+                                <div class="thumb-info">
+                                    <h3><a href="<?php echo base_url() ?>portfolio/<?php echo $post->products_cat_judul_seo?>"><?php echo $post->products_cat_judul?></a></h3>
+                                    <p></p>
+>>>>>>> 42cf6319091cf091480b9dbec2cf805972a6f4bb
                                 </div>
                             </div>
                         </div>

@@ -51,7 +51,6 @@
               <div class="overlay"></div>
               <div class="column-title">
                   <h2><?php echo $posts->products_cat_judul ?></h2>
-                  <h3><?php echo $posts->products_cat_desk ?></h3>
               </div>
               <div class="column-notifer">
                   <div class="scroll-down-wrap transparent_sdw">
@@ -68,7 +67,8 @@
 
                 <?php $produk = $this->Crud_m->view_where_orderings('products',array('products_status'=>'publish','products_cat_id'=>$posts->products_cat_id),'products_id','ASC'); ?>
                 <?php foreach ($produk as $post) {  ?>
-                  <div class="gallery-item">
+                  <a href="<?php echo base_url() ?>portfolio-detail/<?php echo $post->products_judul_seo?>">
+                    <div class="gallery-item">
                       <div class="grid-item-holder hov_zoom">
                         <?php if(empty($post->products_gambar)) {
                             echo "<img src='".base_url()."bahan/foto_products/noimage.jpg'>";
@@ -78,12 +78,10 @@
                             ";}
                          ?>
 
-                          <div class="thumb-info">
-                              <h3><a href="<?php echo base_url() ?>portfolio-detail/<?php echo $post->products_judul_seo?>"><?php echo $post->products_judul?></a></h3>
-
-                          </div>
                       </div>
+                      <span><?php echo $post->products_judul?></span>
                   </div>
+                  </a>
 
                   <?php } ?>
               </div>

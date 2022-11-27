@@ -122,6 +122,7 @@
         <?php } ?>
       </li>
 
+<<<<<<< HEAD
 
       <!-- <li class="nav-item">
         <a href="<?php echo base_url(); ?>paneladmin/pengumuman" class="nav-link " >
@@ -132,6 +133,8 @@
         </a>
       </li> -->
 
+=======
+>>>>>>> 42cf6319091cf091480b9dbec2cf805972a6f4bb
       <?php  if($this->session->level=='1' OR $this->session->level=='2'){ ?>
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -157,6 +160,7 @@
                 <i class="far fa-circle nav-icon"></i>
                 <p>Portfolio</p>
               </a>
+<<<<<<< HEAD
             </li> -->
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>paneladmin/services" class="nav-link">
@@ -164,6 +168,10 @@
                 <p>Layanan</p>
               </a>
             </li>
+=======
+            </li>
+        
+>>>>>>> 42cf6319091cf091480b9dbec2cf805972a6f4bb
 
           </ul>
         </li>
