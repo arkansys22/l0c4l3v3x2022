@@ -17,6 +17,7 @@
       <p class="login-box-msg">Daftar Sekarang!</p>
 
       <?php echo form_open('register'); ?>
+          <span>Full Name</span>
           <input type="text" class="form-control" name="nama" placeholder="Full Name" required>
           <small><?php echo form_error('nama'); ?></small><br>
 
@@ -36,11 +37,9 @@
           <select name='user_detail_agama' class="form-control select2" style="width: 100%;">
             <option selected='selected' value=''>Choose Tenant</option>
             <?php foreach ($records_tenant as $row) {
-              if ($rows['user_tenant_id'] == $row['user_tenant_id']){
-                echo"<option selected='selected' value='$row[user_tenant_id]'>$row[user_tenant_nama]</option>";
-              }else{
+
                 echo"<option value='$row[user_tenant_id]'>$row[user_tenant_nama]</option>";
-           }
+  
          } ?>
         </select><br>
 
