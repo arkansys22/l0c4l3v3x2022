@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?php echo base_url()?>paneladmin/divisi">Divisi</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url()?>aspanel/divisi">Divisi</a></li>
             <li class="breadcrumb-item active">Tambah divisi</li>
           </ol>
         </div>
@@ -36,14 +36,14 @@
 
             <!-- form start -->
             <?php $attributes = array('class'=>'form-horizontal','role'=>'form');
-            echo form_open_multipart('paneladmin/divisi_tambahkan',$attributes); ?>
+            echo form_open_multipart('aspanel/divisi_tambahkan',$attributes); ?>
               <div class="card-body">
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label>Kode Divisi</label>
-                        <input type="text" class="form-control" name="products_cat_meta_desk" placeholder="Kode divisi">
+                        <input type="text" class="form-control" name="divisi_meta_desk" placeholder="Kode divisi">
                       </div>
                     </div>
                   </div>
@@ -51,7 +51,7 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label>Nama Divisi</label>
-                        <input type="text" class="form-control" name="products_cat_judul" placeholder="Nama Divisi">
+                        <input type="text" class="form-control" name="divisi_judul" placeholder="Nama Divisi">
                       </div>
                     </div>
                   </div>
@@ -59,7 +59,7 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label>Deskripsi</label>
-                        <textarea class="textarea"  name ="products_cat_desk" style="width: 100%; height: 100px;"></textarea>
+                        <textarea class="textarea"  name ="divisi_desk" style="width: 100%; height: 100px;"></textarea>
                       </div>
                     </div>
                   </div>
@@ -69,7 +69,7 @@
               </div>
               <div class="card-footer">
                 <button type="submit" name ="submit" class="btn btn-success" title="Add Products"><i class="fas fa-file-upload"></i> Tambahkan</button>
-                <a class="btn btn-outline-info" title="Cancel" href="<?php echo base_url()?>paneladmin/divisi"><i class="fab fa-creative-commons-sa"></i> Batal</a>
+                <a class="btn btn-outline-info" title="Cancel" href="<?php echo base_url()?>aspanel/divisi"><i class="fab fa-creative-commons-sa"></i> Batal</a>
 
               </div>
                 <?php echo form_close(); ?>

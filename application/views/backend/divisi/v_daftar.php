@@ -23,8 +23,8 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><a class="btn btn-success btn-sm" title="Edit Data" href="<?php echo base_url()?>paneladmin/divisi_tambahkan"><i class="fas fa-plus-circle"></i> Tambahkan</a></h3>
-              <h3 class="text-right"><a class="btn btn-danger btn-sm" title="Edit Data" href="<?php echo base_url()?>paneladmin/divisi_storage_bin"><i class="fas fa-trash"></i> Sampah</a></h3>
+              <h3 class="card-title"><a class="btn btn-success btn-sm" title="Edit Data" href="<?php echo base_url()?>aspanel/divisi_tambahkan"><i class="fas fa-plus-circle"></i> Tambahkan</a></h3>
+              <h3 class="text-right"><a class="btn btn-danger btn-sm" title="Edit Data" href="<?php echo base_url()?>aspanel/divisi_storage_bin"><i class="fas fa-trash"></i> Sampah</a></h3>
             </div>
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -47,8 +47,8 @@
                   <td><?=$row['divisi_judul']?></td>
                   <td>
                     <?php
-                    echo"<a class='btn btn-primary btn-sm' title='Edit Data' href='".base_url()."paneladmin/divisi_update/$row[divisi_id]'><i class='fas fa-edit'></i></a>
-                    <a class='btn btn-danger btn-sm' title='Delete Data' href='".base_url()."paneladmin/divisi_delete_temp/$row[divisi_id]' onclick=\"return confirm('Yakin ingin menghapus data ini?')\"><i class='fas fa-trash-alt'></i></a>";
+                    echo"<a class='btn btn-primary btn-sm' title='Edit Data' href='".base_url()."aspanel/divisi_update/$row[divisi_id]'><i class='fas fa-edit'></i></a>
+                    <a class='btn btn-danger btn-sm' title='Delete Data' href='".base_url()."aspanel/divisi_delete_temp/$row[divisi_id]' onclick=\"return confirm('Yakin ingin menghapus data ini?')\"><i class='fas fa-trash-alt'></i></a>";
                     ?>
                   </td>
                 </tr>

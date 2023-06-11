@@ -14,8 +14,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?php echo base_url()?>paneladmin/home">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?php echo base_url()?>paneladmin/divisi">Daftar Divisi</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url()?>aspanel/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url()?>aspanel/divisi">Daftar Divisi</a></li>
             <li class="breadcrumb-item active">Perbarui Divisi</li>
           </ol>
         </div>
@@ -35,7 +35,7 @@
             <!-- /.card-header -->
             <!-- form start -->
             <?php $attributes = array('class'=>'form-horizontal','role'=>'form');
-            echo form_open_multipart('paneladmin/divisi_update',$attributes); ?>
+            echo form_open_multipart('aspanel/divisi_update',$attributes); ?>
 
               <div class="card-body">
                 <div class="form-group">
@@ -68,7 +68,7 @@
               </div>
               <div class="card-footer">
                 <button type="submit" name ="submit" class="btn btn-success" title="Perbarui"><i class="fas fa-file-upload"></i> Perbarui</button>
-                <a class="btn btn-primary" title="Batal" href="<?php echo base_url()?>paneladmin/divisi"><i class="fab fa-creative-commons-sa"></i> Batal</a>
+                <a class="btn btn-primary" title="Batal" href="<?php echo base_url()?>aspanel/divisi"><i class="fab fa-creative-commons-sa"></i> Batal</a>
 
               </div>
             <?php echo form_close(); ?>

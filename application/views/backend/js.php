@@ -1,20 +1,20 @@
-<script src="<?php echo base_url()?>bahan/backend/jquery/jquery.min.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/adminlte.min.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/dashboard.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/demo.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/jquery-ui.min.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/jquery.knob.min.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/moment.min.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/sparkline.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/jquery.overlayScrollbars.min.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/tempusdominus-bootstrap-4.min.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/daterangepicker.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/bs-custom-file-input.min.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/jquery.dataTables.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/js/dataTables.bootstrap4.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/summernote/summernote-bs4.min.js"></script>
-<script src="<?php echo base_url()?>bahan/backend/tag/js/tag-it.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/adminlte.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/dashboard.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/demo.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/jquery-ui.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/jquery.knob.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/moment.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/sparkline.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/jquery.overlayScrollbars.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/daterangepicker.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/bs-custom-file-input.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/jquery.dataTables.js"></script>
+<script src="<?php echo base_url()?>assets/backend/js/dataTables.bootstrap4.js"></script>
+<script src="<?php echo base_url()?>assets/backend/summernote/summernote-bs4.min.js"></script>
+<script src="<?php echo base_url()?>assets/backend/tag/js/tag-it.min.js"></script>
 <script type="text/javascript">
   $(function () {
     $('.textarea').summernote()
@@ -34,6 +34,7 @@
       "ordering": true,
       "info": true,
       "autoWidth": true,
+      "order": [[ 0, 'desc' ]]
     });
     $('#example2').DataTable({
       "paging": true,
@@ -62,29 +63,20 @@
             });
 </script>
 
-    <script>
-        var hoursLabel = document.getElementById("hours");
-        var minutesLabel = document.getElementById("minutes");
-        var secondsLabel = document.getElementById("seconds");
-        setInterval(setTime, 1000);
-
-        function setTime() {
-            secondsLabel.innerHTML = pad(Math.floor(new Date().getSeconds()));
-            minutesLabel.innerHTML = pad(Math.floor(new Date().getMinutes()));
-            hoursLabel.innerHTML = pad(Math.floor(new Date().getHours()));
+<script>
+    $(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
         }
+    });
+});
 
-        function pad(val) {
-            var valString = val + "";
-            if (valString.length < 2) {
-                return "0" + valString;
-            } else {
-                return valString;
-            }
-        }
-
-        <?php if(@$this->session->absen_needed): ?>
-            var absenNeeded = '<?= json_encode($this->session->absen_needed) ?>';
-            <?php $this->session->sess_unset('absen_needed') ?>
-        <?php endif; ?>
-    </script>
+</script>

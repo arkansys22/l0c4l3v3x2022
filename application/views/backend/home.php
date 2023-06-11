@@ -23,16 +23,16 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-
+        <!-- Small boxes (Stat box) -->
         <div class="row">
         <?php  if($this->session->level=='1'){ ?>
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
-              <?php $jmlproducts1 = $this->Panel_m->view('user')->num_rows(); ?>
+              <?php $jmlproducts1 = $this->As_m->view('user')->num_rows(); ?>
               <div class="inner">
                 <h3><?php echo $jmlproducts1; ?></h3>
-                <p>Total Karyawan</p>
+                <p>Total Produk</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-stalker"></i>
@@ -41,8 +41,8 @@
             </div>
           </div>
           <?php } ?>
-
         </div>
+        <!-- /.row -->
         <!-- Main row -->
         <div class="row">
 

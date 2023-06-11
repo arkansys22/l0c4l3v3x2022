@@ -34,7 +34,7 @@
             <!-- /.card-header -->
             <!-- form start -->
             <?php $attributes = array('class'=>'form-horizontal','role'=>'form');
-            echo form_open_multipart('paneladmin/identitaswebsite',$attributes); ?>
+            echo form_open_multipart('aspanel/identitaswebsite',$attributes); ?>
               <div class="card-body">
                 <div class="form-group">
                   <input type="hidden" name="id_identitas" value="<?php echo $record['id_identitas']?>">
@@ -166,7 +166,7 @@
                         <label>Your Logo</label>
                         <div class="custom-file">
                           <input type="file" class="custom-file-input" name="logo">
-                          <label class="custom-file-label" for="exampleInputFile">Image before <?php echo $record['logo'] ?></label>
+                          <label class="custom-file-label" for="exampleInputFile"><?php echo $record['logo'] ?></label>
                         </div>
                       </div>
                     </div>
@@ -174,7 +174,7 @@
                       <div class="form-group">
                         <label>Preview Logo</label>
                         <br>
-                        <img class="img-fluid mb-3" src="<?php echo base_url()?>bahan/backend/foto/<?php echo $record['logo'] ?>" alt="Photo">
+                        <img class="img-fluid mb-3" src="<?php echo base_url()?>assets/frontend/campur/<?php echo $record['logo'] ?>" alt="Photo">
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -182,7 +182,7 @@
                         <label>Favicon</label>
                         <div class="custom-file">
                           <input type="file" class="custom-file-input" name="favicon">
-                          <label class="custom-file-label" for="exampleInputFile">Image before <?php echo $record['favicon'] ?></label>
+                          <label class="custom-file-label" for="exampleInputFile"><?php echo $record['favicon'] ?></label>
                         </div>
                       </div>
                     </div>
@@ -190,7 +190,7 @@
                       <div class="form-group">
                         <label>Preview Favicon</label>
                         <br>
-                        <img class="img-fluid mb-3" src="<?php echo base_url()?>bahan/backend/foto/<?php echo $record['favicon'] ?>" alt="Photo">
+                        <img class="img-fluid mb-3" src="<?php echo base_url()?>assets/frontend/campur/<?php echo $record['favicon'] ?>" alt="Photo">
                       </div>
                     </div>
                   </div>

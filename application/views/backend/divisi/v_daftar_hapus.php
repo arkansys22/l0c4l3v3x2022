@@ -11,7 +11,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?php echo base_url()?>">Home</a></li>
-            <li class="breadcrumb-item active"><a href="<?php echo base_url()?>paneladmin/divisi">Daftar Divisi</a></li>
+            <li class="breadcrumb-item active"><a href="<?php echo base_url()?>aspanel/divisi">Daftar Divisi</a></li>
             <li class="breadcrumb-item active">Divisi Terhapus</li>
           </ol>
         </div>
@@ -24,7 +24,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><a class="btn btn-success btn-sm" title="Edit Data" href="<?php echo base_url()?>paneladmin/divisi">Kembali Ke Daftar Divisi</a></h3>
+              <h3 class="card-title"><a class="btn btn-success btn-sm" title="Edit Data" href="<?php echo base_url()?>aspanel/divisi">Kembali Ke Daftar Divisi</a></h3>
             </div>
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -47,8 +47,8 @@
                   <td><?=$row['divisi_meta_desk']?></td>
                   <td>
                     <?php
-                    echo"<a class='btn btn-primary btn-sm' title='Kembalikan' href='".base_url()."paneladmin/divisi_restore/$row[divisi_id]' onclick=\"return confirm('Yakin ingin mengembalikan data ini?')\"><i class='fab fa-creative-commons-sa'></i></a>
-                    <a class='btn btn-danger btn-sm' title='Permanently Delete' href='".base_url()."paneladmin/divisi_delete/$row[divisi_id]' onclick=\"return confirm('Yakin untuk menghapus data ini secara permanen?')\"><i class='fas fa-trash-alt'></i></a>";
+                    echo"<a class='btn btn-primary btn-sm' title='Kembalikan' href='".base_url()."aspanel/divisi_restore/$row[divisi_id]' onclick=\"return confirm('Yakin ingin mengembalikan data ini?')\"><i class='fab fa-creative-commons-sa'></i></a>
+                    <a class='btn btn-danger btn-sm' title='Permanently Delete' href='".base_url()."aspanel/divisi_delete/$row[divisi_id]' onclick=\"return confirm('Yakin untuk menghapus data ini secara permanen?')\"><i class='fas fa-trash-alt'></i></a>";
                     ?>
                   </td>
                 </tr>

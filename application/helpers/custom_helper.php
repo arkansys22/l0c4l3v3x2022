@@ -2,16 +2,24 @@
 function cek_session_akses($id){
   $ci = & get_instance();
   $session = $ci->db->query("SELECT * FROM user WHERE user.id_session='$id'")->num_rows();
-  if ($session == '0' AND $ci->session->userdata('level') != '1' ){
-    redirect(base_url().'paneladmin/home');
+  if ($session == '0' AND $ci->session->userdata('level') != '1'){
+    redirect(base_url().'aspanel/home');
   }
 }
 
-function cek_session_super_user($id){
+function cek_session_akses_admin($id){
   $ci = & get_instance();
   $session = $ci->db->query("SELECT * FROM user WHERE user.id_session='$id'")->num_rows();
   if ($session == '0' AND $ci->session->userdata('level') != '2'){
-    redirect(base_url().'paneladmin/home');
+    redirect(base_url().'aspanel/home');
+  }
+}
+
+function cek_session_staff($id){
+  $ci = & get_instance();
+  $session = $ci->db->query("SELECT * FROM user WHERE user.id_session='$id'")->num_rows();
+  if ($session == '0' AND $ci->session->userdata('level') != '3'){
+    redirect(base_url().'aspanel/home');
   }
 }
 function hari_ini($w){

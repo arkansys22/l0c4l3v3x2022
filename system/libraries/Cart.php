@@ -141,7 +141,7 @@ class CI_Cart {
 		// at the top level. If it's not found, we will assume it's a multi-dimensional array.
 
 		$save_cart = FALSE;
-		if (isset($items['products_id']))
+		if (isset($items['id']))
 		{
 			if (($rowid = $this->_insert($items)))
 			{
@@ -192,7 +192,7 @@ class CI_Cart {
 		// --------------------------------------------------------------------
 
 		// Does the $items array contain an id, quantity, price, and name?  These are required
-		if ( ! isset($items['products_id'], $items['qty'], $items['price'], $items['name']))
+		if ( ! isset($items['id'], $items['qty'], $items['price'], $items['name']))
 		{
 			log_message('error', 'The cart array must contain a product ID, quantity, price, and name.');
 			return FALSE;
@@ -214,7 +214,7 @@ class CI_Cart {
 		// Validate the product ID. It can only be alpha-numeric, dashes, underscores or periods
 		// Not totally sure we should impose this rule, but it seems prudent to standardize IDs.
 		// Note: These can be user-specified by setting the $this->product_id_rules variable.
-		if ( ! preg_match('/^['.$this->product_id_rules.']+$/i', $items['products_id']))
+		if ( ! preg_match('/^['.$this->product_id_rules.']+$/i', $items['id']))
 		{
 			log_message('error', 'Invalid product ID.  The product ID can only contain alpha-numeric characters, dashes, and underscores');
 			return FALSE;
@@ -247,14 +247,14 @@ class CI_Cart {
 		// This becomes the unique "row ID"
 		if (isset($items['options']) && count($items['options']) > 0)
 		{
-			$rowid = md5($items['products_id'].serialize($items['options']));
+			$rowid = md5($items['id'].serialize($items['options']));
 		}
 		else
 		{
 			// No options were submitted so we simply MD5 the product ID.
 			// Technically, we don't need to MD5 the ID in this case, but it makes
 			// sense to standardize the format of array indexes for both conditions
-			$rowid = md5($items['products_id']);
+			$rowid = md5($items['id']);
 		}
 
 		// --------------------------------------------------------------------

@@ -13,7 +13,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?php echo base_url() ?>paneladmin/home">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url() ?>aspanel/home">Dashboard</a></li>
             <li class="breadcrumb-item active">User Profil</li>
           </ol>
         </div>
@@ -31,11 +31,9 @@
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                     <?php if(empty($users['user_gambar'])) { ?>
-                       <img src="<?php echo base_url()?>bahan/foto_profil/logo-default.png" class="profile-user-img img-fluid img-circle" alt="User Image">
-                     <?php }else { ?>
-                       <img src="<?php echo base_url()?>bahan/foto_profil/<?php echo $users['user_gambar'];?>" class="profile-user-img img-fluid img-circle" alt="User Image">
-                     <?php }?>
+                <img class="profile-user-img img-fluid img-circle"
+                     src="<?php echo base_url()?>assets/frontend/user/<?php echo $users['user_gambar'];?>"
+                     alt="User profile picture">
               </div>
 
               <h3 class="profile-username text-center"><?php echo "$users[username]";?></h3>
@@ -50,7 +48,7 @@
                   <b>Terakhir aktif</b><br> <a class=""><?php echo tgl_indo($users['user_login_tanggal']);?> <?php echo $users['user_login_jam'];?></a>
                 </li>
               </ul>
-              <a href="<?php echo base_url(); ?>paneladmin/logout" class="btn btn-primary btn-block"><b>Keluar</b></a>
+              <a href="<?php echo base_url(); ?>aspanel/logout" class="btn btn-primary btn-block"><b>Keluar</b></a>
             </div>
             <!-- /.card-body -->
           </div>
@@ -71,7 +69,7 @@
               <div class="tab-content">
                 <div class="active tab-pane" id="security">
                   <?php $attributes = array('class'=>'form-horizontal','role'=>'form');
-                  echo form_open_multipart('paneladmin/profil',$attributes); ?>
+                  echo form_open_multipart('aspanel/profil',$attributes); ?>
                     <input type="hidden" name="id_user" value="<?php echo $record['id_user']?>">
                     <div class="form-group row">
                       <label for="inputName" class="col-sm-3 col-form-label">Username</label>
@@ -101,29 +99,16 @@
                       <label class="col-sm-3 col-form-label">Foto profil</label>
                       <div class="col-sm-9">
                         <div class="custom-file">
-                          <input type="file" accept="image/*" capture="camera" name="gambar">
-
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Foto profil</label>
-                      <div class="col-sm-9">
-                        <div class="custom-file">
                           <input type="file" class="custom-file-input" name="gambar">
-                          <label class="custom-file-label" for="exampleInputFile">Belum ada upload foto profil <?php echo $record['user_gambar'] ?></label>
+                          <label class="custom-file-label" for="exampleInputFile"><?php echo $record['user_gambar'] ?></label>
                         </div>
                       </div>
+
                     </div>
                     <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Penampakan</label>
+                      <label class="col-sm-3 col-form-label">Preview</label>
                     <div class="col-sm-9">
-                    <?php if(empty($record['user_gambar'])) { ?>
-                        <img src="<?php echo base_url()?>bahan/foto_profil/logo-default.png" class="img-fluid mb-3">
-                      <?php }else { ?>
-                        <img src="<?php echo base_url()?>bahan/foto_profil/<?php echo $record['user_gambar'];?>" class="img-fluid mb-3">
-                      <?php }?>
-
+                      <img class="img-fluid mb-3" src="<?php echo base_url()?>assets/frontend/user/<?php echo $record['user_gambar'] ?>" alt="Photo">
                     </div>
                     </div>
                     <div class="form-group row">

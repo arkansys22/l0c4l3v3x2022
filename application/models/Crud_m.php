@@ -13,6 +13,14 @@ class Crud_m extends CI_model{
   public $table_blogs ='blogs';
 
 
+  public function verifyemail($key)
+  {
+      $data = array('user_status' => 1);
+      $this->db->where('md5(email)', $key);
+      return $this->db->update('user', $data);
+  }
+
+
   public function view_ordering($table,$order,$ordering)
   {
       $this->db->select('*');
@@ -38,36 +46,6 @@ class Crud_m extends CI_model{
       return $this->db->get($this->table_services)->row();
   }
 
-  public function view_where_orderings($table,$data,$order,$ordering)
-    {
-         $this->db->select('*');
-         $this->db->from($table);
-         $this->db->where($data);
-         $this->db->order_by($order,$ordering);
-         return $this->db->get()->result();
-     }
-     public function view_where_orderings_limit($table,$data,$order,$ordering,$dari,$baris)
-       {
-            $this->db->select('*');
-            $this->db->from($table);
-            $this->db->where($data);
-            $this->db->limit($dari, $baris);
-            $this->db->order_by($order,$ordering);
-            return $this->db->get()->result();
-        }
-
-
-
-     public function view_join_where_orderings($table1,$table2,$field,$data,$order,$ordering)
-       {
-            $this->db->select('*');
-            $this->db->from($table1);
-            $this->db->join($table2, $table1.'.'.$field.'='.$table2.'.'.$field);
-            $this->db->where($data);
-            $this->db->order_by($order,$ordering);
-            return $this->db->get()->result();
-        }
-
   function get_by_id_products_category($products_cat_id)
   {
       $this->db->where($this->products_cat_id, $products_cat_id);
@@ -80,6 +58,13 @@ class Crud_m extends CI_model{
       $this->db->where($this->blogs_id, $id);
       $this->db->or_where('blogs_judul_seo', $id);
       return $this->db->get($this->table_blogs)->row();
+  }
+  function get_by_id_post($id,$table_ids,$table_nama,$judul_seo)
+  {
+
+      $this->db->where($table_ids, $id);
+      $this->db->or_where($judul_seo, $id);
+      return $this->db->get($table_nama)->row();
   }
 
   public function view_join_where($table1,$table2,$field,$where)
@@ -129,13 +114,12 @@ class Crud_m extends CI_model{
           $this->db->limit($dari, $baris);
           return $this->db->get()->result();
   }
-  public function view_join_where_publish($table1,$table2,$field,$status,$status2,$order,$ordering,$baris,$dari)
+  public function view_join_where_publish($table1,$table2,$field,$status,$order,$ordering,$baris,$dari)
   {
             $this->db->select('*');
             $this->db->from($table1);
             $this->db->join($table2, $table1.'.'.$field.'='.$table2.'.'.$field);
             $this->db->where($status,'publish');
-            $this->db->where($status2,'NON PROMO');
             $this->db->order_by($order,$ordering);
             $this->db->limit($dari, $baris);
             return $this->db->get()->result();
@@ -203,7 +187,7 @@ class Crud_m extends CI_model{
   }
   public function views_row($table1,$status,$order,$ordering)
   {
-
+     $this->db->limit(3);
      $this->db->from($table1);
      $this->db->where($status,'publish');
      $this->db->order_by($order,$ordering);
@@ -217,7 +201,28 @@ class Crud_m extends CI_model{
          $this->db->limit($dari, $baris);
          return $this->db->get()->result();
   }
-
+  public function view_where_orders($table1,$status,$order,$ordering)
+  {
+         $this->db->from($table1);
+         $this->db->where($status,'publish');
+         $this->db->order_by($order,$ordering);
+         return $this->db->get()->result();
+  }
+  public function view_where_order($table1,$where,$order,$ordering)
+  {
+         $this->db->from($table1);
+         $this->db->where($where);
+         $this->db->order_by($order,$ordering);
+         return $this->db->get()->result();
+  }
+  public function view_where_order_limit($table1,$where,$order,$ordering,$baris,$dari)
+  {
+         $this->db->from($table1);
+         $this->db->where($where);
+         $this->db->order_by($order,$ordering);
+         $this->db->limit($dari, $baris);
+         return $this->db->get()->result();
+  }
 
   public function viewz($table,$order,$ordering)
   {
@@ -257,17 +262,64 @@ class Crud_m extends CI_model{
         $this->db->set('blogs_dibaca', ($count->blogs_dibaca + 1));
         $this->db->update('blogs');
     }
-    function update_counters($id,$table,$judul_seo,$dibaca)
-   {
-        
-        $this->db->where($judul_seo, urldecode($id));
-        $this->db->select($dibaca);
-        $count = $this->db->get($table)->row();
-        // then increase by one
-        $this->db->where($judul_seo, urldecode($id));
-        $this->db->set($dibaca, ($count->$dibaca + 1));
-        $this->db->update($table);
-    }
+    function update_counter_bisnis($id)
+      {
+          //return current article views
+          $this->db->where('bisnis_judul_seo', urldecode($id));
+          $this->db->select('bisnis_dibaca');
+          $count = $this->db->get('bisnis')->row();
+          // then increase by one
+          $this->db->where('bisnis_judul_seo', urldecode($id));
+          $this->db->set('bisnis_dibaca', ($count->bisnis_dibaca + 1));
+          $this->db->update('bisnis');
+      }
+    function update_counter_templates($id)
+      {
+            //return current article views
+            $this->db->where('templates_judul_seo', urldecode($id));
+            $this->db->select('templates_dibaca');
+            $count = $this->db->get('templates')->row();
+            // then increase by one
+            $this->db->where('templates_judul_seo', urldecode($id));
+            $this->db->set('templates_dibaca', ($count->templates_dibaca + 1));
+            $this->db->update('templates');
+      }
+
+      function update_counter($id,$table,$judul_seo,$dibaca)
+        {
+              //return current article views
+              $this->db->where($judul_seo, urldecode($id));
+              $this->db->select($dibaca);
+              $count = $this->db->get($table)->row();
+              // then increase by one
+              $this->db->where($judul_seo, urldecode($id));
+              $this->db->set($dibaca, ($count->$dibaca + 1));
+              $this->db->update($table);
+        }
+      function update_counter_paketharga($id)
+      {
+            //return current article views
+            $this->db->where('paketharga_judul_seo', urldecode($id));
+            $this->db->select('paketharga_dibaca');
+            $count = $this->db->get('paketharga')->row();
+            // then increase by one
+            $this->db->where('paketharga_judul_seo', urldecode($id));
+            $this->db->set('paketharga_dibaca', ($count->paketharga_dibaca + 1));
+            $this->db->update('paketharga');
+        }
+
+      function update_counter_berita($id)
+       {
+            //return current article views
+            $this->db->where('blogs_judul_seo', urldecode($id));
+            $this->db->select('blogs_dibaca');
+            $count = $this->db->get('blogs')->row();
+            $this->db->reset_query();
+            // then increase by one
+            $this->db->where('blogs_judul_seo', urldecode($id));
+            $this->db->set('blogs_dibaca', ($count->blogs_dibaca + 1));
+            $this->db->update('blogs');
+        }
 
   public function view_ordering_limits($table,$order,$ordering,$baris,$dari)
     {
@@ -284,6 +336,10 @@ class Crud_m extends CI_model{
    		$id = $this->db->insert_id();
    		return (isset($id)) ? $id : FALSE;
    	}
+
+    public function cek_register($username,$email,$table){
+          return $this->db->query("SELECT * FROM $table where username='".$this->db->escape_str($username)."' OR email='".$this->db->escape_str($email)."' ");
+      }
 
   public function tambah_user_detail($data)
    {
@@ -303,4 +359,22 @@ class Crud_m extends CI_model{
 		   $this->db->insert('products_order_detail', $data);
 	 }
 
+   function total_rows() {
+    $this->db->where('blogs_status','publish');
+  return $this->db->get('blogs')->num_rows();
+}
+function get_all_blogs($per_page,$dari)
+  {
+    $this->db->order_by('blogs_id', 'DESC');
+    $this->db->where('blogs_status','publish');
+    $query = $this->db->get('blogs',$per_page,$dari);
+    return $query->result();
+  }
+  function get_all_blogs2($per_page,$dari)
+  {
+    $this->db->order_by('blogs_id', 'DESC');
+    $this->db->where('blogs_status','publish');
+    $query = $this->db->get('blogs',$per_page,$dari);
+    return $query->result();
+  }
 }

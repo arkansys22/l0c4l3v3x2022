@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?php echo base_url()?>paneladmin/data_karyawan">Data Karyawan</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url()?>aspanel/data_karyawan">Data Karyawan</a></li>
             <li class="breadcrumb-item active">Tambah Data Karyawan</li>
           </ol>
         </div>
@@ -36,7 +36,7 @@
 
             <!-- form start -->
             <?php $attributes = array('class'=>'form-horizontal','role'=>'form');
-            echo form_open_multipart('paneladmin/data_karyawan_update',$attributes); ?>
+            echo form_open_multipart('aspanel/data_karyawan_update',$attributes); ?>
               <div class="card-body">
                 <div class="form-group">
                   <input type="hidden" name="id_user" value="<?php echo $rows['id_user'] ?>">
@@ -211,7 +211,7 @@
               </div>
               <div class="card-footer">
                 <button type="submit" name ="submit" class="btn btn-success" title="Tambahkan"><i class="fas fa-file-upload"></i> Tambahkan</button>
-                <a class="btn btn-outline-info" title="Cancel" href="<?php echo base_url()?>paneladmin/data_karyawan"><i class="fab fa-creative-commons-sa"></i> Batal</a>
+                <a class="btn btn-outline-info" title="Cancel" href="<?php echo base_url()?>aspanel/data_karyawan"><i class="fab fa-creative-commons-sa"></i> Batal</a>
 
               </div>
                 <?php echo form_close(); ?>
