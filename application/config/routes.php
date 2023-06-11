@@ -12,6 +12,7 @@ $route['daftar'] = "Aspanel/register";
 $route['klien/(:any)'] = "Klien/detail/$1";
 $route['harga/(:any)'] = "Harga/detail/$1";
 $route['produk/(:any)'] = "product/detail/$1";
+$route['produk-category/(:any)'] = "product/category/$1";
 $route['quick/(:any)'] = "templates/quick_detail/$1";
 $route['tips/(:any)'] = "berita/detail/$1";
 $route['syarat-ketentuan/(:any)'] = "note/detail/$1";

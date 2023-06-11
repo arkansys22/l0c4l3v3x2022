@@ -57,12 +57,13 @@ class Product extends CI_Controller {
 
 	public function category()
 	{
-		$query = $this->Crud_m->view_where('products_category',array('products_cat_judul_seo' => $this->uri->segment(3)));
+		$link = $this->uri->segment(3);
+		$query = $this->Crud_m->view_where('templates_category',array('templates_cat_judul_seo' => $this->uri->segment(3)));
 		if ($query->num_rows()<=0){
 			redirect('main');
 		}else{
 			$row = $query->row_array();
-			$jumlah= $this->Crud_m->view_where('products',array('products_status'=>'publish','products_disc_status'=>'NON PROMO','products_cat_id' => $row['products_cat_id']))->num_rows();
+			$jumlah= $this->Crud_m->view_where('templates',array('templates_status'=>'publish','templates_cat_id' => $row['templates_cat_id']))->num_rows();
 			$config['base_url'] = base_url().'product/category/p/'.$this->uri->segment(3);
 			$config['total_rows'] = $jumlah;
 			$config['per_page_product'] = 12;
@@ -93,16 +94,21 @@ class Product extends CI_Controller {
 			}
 			$this->pagination->initialize($config);
 			if (is_numeric($dari)) {
-				$data['identitas']= $this->Crud_m->get_by_id_identitas($id='1');
-				$data['posts'] = $this->Crud_m->view_join_one('products','products_category','products_cat_id',array('products_status'=>'publish','products_disc_status'=>'NON PROMO','products_cat_judul_seo' => $this->uri->segment(3),'products.products_cat_id' => $row['products_cat_id']),'products_id','DESC',$dari,$config['per_page_product']);
-				$data['posts_cat_product'] = $this->Crud_m->view_one_limit('products_category','products_cat_status','products_cat_id','RANDOM',$dari,$config['per_page']);
+				$this->data['identitas']= $this->Crud_m->get_by_id_identitas($id='1');
+
+				$this->data['posts_templates_category']= $this->Crud_m->view_one_limit('templates_category','templates_cat_status','templates_cat_id','ASC',$dari,'10');
+				
+				$this->data['posts'] = $this->Crud_m->view_join_one('templates','templates_category','templates_cat_id',array('templates_status'=>'publish','templates_cat_judul_seo' => $this->uri->segment(3),'templates.templates_cat_id' => $row['templates_cat_id']),'templates_id','DESC',$dari,'20');
+
+
 
 			}else{
+
 				redirect('main');
 			}
 
-			$data['pagination'] = $this->pagination->create_links();
-			$this->load->view('frontend/v_product_category', $data);
+			$this->data['pagination'] = $this->pagination->create_links();
+			$this->load->view('frontend/v_product_category', $this->data);
 		}
 	}
 

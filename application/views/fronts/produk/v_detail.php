@@ -112,8 +112,8 @@
                                   <span>Share :
                                     <div class="priduct_social">
                                         <ul>
-                                          <li><a class="facebook" href="http://www.facebook.com/sharer.php?u=<?php echo base_url("product_detail/$posts->templates_judul_seo ") ?>" onclick="window.open('http://www.facebook.com/sharer.php?u=<?php echo base_url("product_detail/$posts->templates_judul_seo")?>','newwindow','width=400,height=350');  return false;" title="Facebook" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
-                                            <li><a class="linkedin" href="whatsapp://send?text=<?php echo $posts->templates_judul  ?> - <?php echo $identitas->nama_website?>| <?php echo base_url("product_detail/$posts->templates_judul_seo ") ?>" title="whatsapp"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
+                                          <li><a class="facebook" href="http://www.facebook.com/sharer.php?u=<?php echo base_url("produk/$posts->templates_judul_seo ") ?>" onclick="window.open('http://www.facebook.com/sharer.php?u=<?php echo base_url("produk/$posts->templates_judul_seo")?>','newwindow','width=400,height=350');  return false;" title="Facebook" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
+                                            <li><a class="linkedin" href="whatsapp://send?text=<?php echo $posts->templates_judul  ?> - <?php echo $identitas->nama_website?>| <?php echo base_url("produk/$posts->templates_judul_seo ") ?>" title="whatsapp"><i class="fa fa-whatsapp"></i> WhatsApp</a></li>
 
                                         </ul>
                                     </div>
